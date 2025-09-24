@@ -1,7 +1,7 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Martian_Mono } from "next/font/google";
+import { Martian_Mono, Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -9,6 +9,17 @@ const martianMono = Martian_Mono({
   subsets: ["latin"],
   weight: ["300"], // pick what you want
   variable: "--font-martian",
+});
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-montserrat",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-montserrat",
 });
 
 
@@ -86,7 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
-     <body className={`${martianMono.className} bg-neutral-950 text-neutral-100 antialiased`}>
+     <body  className={`${poppins.className} bg-neutral-950 text-neutral-100 antialiased`}>
         {/* Structured data for rich results */}
         <script
           type="application/ld+json"
