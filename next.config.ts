@@ -1,7 +1,9 @@
+// next.config.ts
+import { withContentlayer } from "next-contentlayer2";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {},
 };
 
-export default nextConfig;
+export default withContentlayer(nextConfig);
