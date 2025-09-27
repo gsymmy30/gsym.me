@@ -1,8 +1,11 @@
 "use client";
 
-import { QUESTIONS, Question } from "@/lib/veep/questions";
-import { QuizAnswer } from "@/lib/veep/types";
 import { useState, useTransition } from "react";
+import Image from "next/image";
+
+import { QUESTIONS, Question } from "@/lib/veep/questions";
+import type { QuizAnswer, VeepResult } from "@/lib/veep/types";
+import { imagePathFor, initialsOf } from "@/lib/veep/assets";
 
 function cn(...c: Array<string | false | undefined>) {
   return c.filter(Boolean).join(" ");
@@ -18,7 +21,7 @@ export default function VeepPage() {
             Which <span className="italic text-zinc-100">Veep</span> character are you?
           </h1>
           <p className="mt-2 text-sm md:text-base text-zinc-400">
-            6 quick questions. Get a witty (PG-13) roast and a dead-on match.
+            6 quick questions. Get a witty roast and a dead-on match.
           </p>
         </header>
         <QuizClient />
@@ -27,14 +30,9 @@ export default function VeepPage() {
   );
 }
 
-function slug(name: string) {
-    return name.toLowerCase().replace(/\s+/g, "-");
-  }
-  
-
 function QuizClient() {
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<VeepResult | null>(null);
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
 
@@ -81,12 +79,12 @@ function QuizClient() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ answers })
         });
-        const data = await res.json();
-        if (!res.ok) {
-          setError(data?.error ?? "Something went wrong.");
+        const json = (await res.json()) as VeepResult | { error?: string };
+        if (!res.ok || "error" in json) {
+          setError(("error" in json && json.error) || "Something went wrong.");
           return;
         }
-        setResult(data);
+        setResult(json as VeepResult);
       } catch {
         setError("Network error.");
       }
@@ -161,7 +159,6 @@ function QuizClient() {
           {isPending ? <Spinner /> : null}
           {isPending ? "Crunching your chaos…" : "Get my character"}
         </button>
-
         {error && <p className="text-sm text-red-400">{error}</p>}
       </div>
 
@@ -184,16 +181,13 @@ function ResultSkeleton() {
   return (
     <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 backdrop-blur p-6">
       <div className="h-6 w-56 rounded bg-zinc-800 animate-pulse" />
-      <div className="mt-2 h-4 w-40 rounded bg-zinc-850 animate-pulse" />
+      <div className="mt-2 h-4 w-40 rounded bg-zinc-800 animate-pulse" />
       <div className="mt-4 space-y-3">
         {Array.from({ length: 6 }).map((_, i) => (
           <div key={i}>
-            <div className="mb-2 h-3 w-40 rounded bg-zinc-850 animate-pulse" />
+            <div className="mb-2 h-3 w-40 rounded bg-zinc-800 animate-pulse" />
             <div className="h-2 w-full rounded bg-zinc-800 overflow-hidden">
-              <div
-                className="h-2 animate-pulse bg-zinc-700"
-                style={{ width: `${30 + i * 10}%` }}
-              />
+              <div className="h-2 animate-pulse bg-zinc-700" style={{ width: `${30 + i * 10}%` }} />
             </div>
           </div>
         ))}
@@ -202,13 +196,14 @@ function ResultSkeleton() {
   );
 }
 
-function ResultCard({ result }: { result: any }) {
+function ResultCard({ result }: { result: VeepResult }) {
   const { top_match, roast, quote, why_you, scores } = result;
+  const imgSrc = imagePathFor(top_match);
 
   return (
     <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 backdrop-blur p-6">
       <div className="flex items-start justify-between gap-4">
-        <div>
+        <div className="min-w-0">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-zinc-100">
             {top_match}
           </h2>
@@ -219,11 +214,14 @@ function ResultCard({ result }: { result: any }) {
             <span className="font-medium text-zinc-300">Roast:</span> {roast}
           </p>
         </div>
-        <img src={`/veep/${slug(top_match)}.png`} alt={top_match} className="h-16 w-16 rounded-xl object-cover ring-1 ring-zinc-800" />
+
+        <div className="shrink-0">
+          <CharacterImage name={top_match} src={imgSrc} />
+        </div>
       </div>
 
       <div className="mt-6 space-y-3">
-        {scores.map((s: any) => (
+        {scores.map(s => (
           <Bar key={s.character} label={s.character} value={s.score} />
         ))}
       </div>
@@ -246,6 +244,25 @@ function ResultCard({ result }: { result: any }) {
           Retake
         </a>
       </div>
+    </div>
+  );
+}
+
+function CharacterImage({ name, src }: { name: string; src: string }) {
+  // Initials fallback sits underneath and will be covered if the image exists.
+  return (
+    <div className="relative h-16 w-16">
+      <div className="absolute inset-0 grid place-items-center rounded-xl bg-zinc-800 text-zinc-300 text-lg font-semibold select-none">
+        {initialsOf(name)}
+      </div>
+      <Image
+        src={src}
+        alt={name}
+        width={64}
+        height={64}
+        priority
+        className="relative z-10 rounded-xl object-cover ring-1 ring-zinc-800"
+      />
     </div>
   );
 }

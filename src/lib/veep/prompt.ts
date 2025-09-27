@@ -8,6 +8,13 @@ export function buildPrompt(answers: QuizAnswer[]) {
   }));
 
   return [
+    "TASK: Produce a single JSON object that matches the given JSON Schema exactly.",
+    "RULES:",
+    "- Do not include markdown fences or explanations.",
+    "- Only use characters from CHARACTER_BIBLE.",
+    "- The 'scores' array MUST contain exactly 9 entries (one per character).",
+    "- 'score' values must be integers 0..100.",
+    "",
     "You are a Veep-flavored personality classifier.",
     "Use ONLY the provided CHARACTER_BIBLE.",
     "Return VALID JSON ONLY matching schema:",
