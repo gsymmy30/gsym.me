@@ -43,7 +43,10 @@ export default function Page() {
     <main className="min-h-screen bg-neutral-950 text-neutral-100">
       
       {/* subtle glow for depth */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_-10%,rgba(255,255,255,0.06),transparent_60%)]" />
+      {/* subtle glow for depth */}
+<div className="pointer-events-none absolute inset-0 -z-10
+  bg-[radial-gradient(60%_40%_at_50%_-10%,rgba(255,255,255,0.03),transparent_65%)]" />
+
 
       <div className="mx-auto max-w-[820px] px-6 py-16 md:py-24">
         {/* HERO */}
@@ -148,7 +151,7 @@ export default function Page() {
               .
             </li>
             <li>
-              Fitness is a huge part of my life. Over the past few years I’ve lost 70+ lbs, built muscle, and
+              Fitness is a huge part of my life. Over the past few years I’ve lost lbs, built muscle, and
               tracked progress obsessively on Strava and Hevy. I’ve trained in boxing and CrossFit, and spend a
               lot of time kayaking or on the rowing erg.
             </li>
