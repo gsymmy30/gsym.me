@@ -100,50 +100,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
      <body  className={`${poppins.className} bg-neutral-950 text-neutral-100 antialiased`}>
 
-        {/* --- cursor glow overlay (high z-index, click-through) --- */}
-        <div
-          id="cursor-glow"
-          className="pointer-events-none fixed left-0 top-0 z-[60]"
-          aria-hidden="true"
-        >
-          <div className="glow-spot"></div>
-        </div>
-
-        {/* motion script (runs after hydration) */}
-        <Script id="cursor-glow-script" strategy="afterInteractive">
-          {`
-            (function () {
-              const el = document.getElementById('cursor-glow');
-              if (!el) return;
-
-              // disable on touch or reduced motion
-              const coarse = window.matchMedia('(pointer: coarse)').matches;
-              const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-              if (coarse) { el.style.display = 'none'; return; }
-
-              let x = 0, y = 0, tx = 0, ty = 0, raf = null;
-
-              window.addEventListener('mousemove', (e) => {
-                tx = e.clientX;
-                ty = e.clientY;
-                if (!raf && !reduce) raf = requestAnimationFrame(step);
-                if (reduce) el.style.transform = 'translate3d(' + tx + 'px,' + ty + 'px,0)';
-              }, { passive: true });
-
-              function step() {
-                x += (tx - x) * 0.18;
-                y += (ty - y) * 0.18;
-                el.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
-                if (Math.abs(tx - x) > 0.1 || Math.abs(ty - y) > 0.1) {
-                  raf = requestAnimationFrame(step);
-                } else {
-                  raf = null;
-                }
-              }
-            })();
-          `}
-        </Script>
-
         {/* Structured data for rich results */}
         <script
           type="application/ld+json"

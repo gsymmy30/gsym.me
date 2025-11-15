@@ -42,11 +42,6 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100">
       
-      {/* subtle glow for depth */}
-      {/* subtle glow for depth */}
-<div className="pointer-events-none absolute inset-0 -z-10
-  bg-[radial-gradient(60%_40%_at_50%_-10%,rgba(255,255,255,0.03),transparent_65%)]" />
-
 
       <div className="mx-auto max-w-[820px] px-6 py-16 md:py-24">
         {/* HERO */}
