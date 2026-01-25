@@ -27,7 +27,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL("https://gsym.me"),
   title: {
-    default: "Gursimran Singh — TPM at Google DeepMind",
+    default: "Gursimran Singh",
     template: "%s | Gursimran Singh",
   },
   description:
