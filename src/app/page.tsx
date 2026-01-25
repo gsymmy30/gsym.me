@@ -95,16 +95,16 @@ export default function Page() {
             </h2>
             <div className="flex-1 h-px bg-neutral-800/50" />
           </div>
-          <ul className="list-disc pl-5 space-y-4 leading-[1.75] text-neutral-200 marker:text-neutral-600 max-w-[68ch]">
-            <li>Technical Program Manager @ Google DeepMind.</li>
-            <li>Previously - Product @ Microsoft Azure, working on Azure Observability and AIOps.</li>
-            <li>
+          <div className="space-y-4 text-[1.0625rem] leading-[1.7] text-neutral-100 max-w-[56ch]">
+            <p>Technical Program Manager @ Google DeepMind.</p>
+            <p>Previously — Product @ Microsoft Azure, working on Azure Observability and AIOps.</p>
+            <p>
               CS + Design @ Georgia Tech, focused on computer vision, founded a{" "}
               <a
                 href="https://www.youtube.com/watch?v=0-CumFHE8eo"
                 target="_blank"
                 rel="noreferrer"
-                className="underline underline-offset-4 decoration-neutral-500/40 transition-colors hover:text-white hover:decoration-neutral-200"
+                className="underline underline-offset-4 decoration-neutral-500 transition-colors hover:text-white hover:decoration-neutral-300"
               >
                 scooter-safety startup
               </a>
@@ -113,14 +113,14 @@ export default function Page() {
                 href="https://devpost.com/gursimransingh"
                 target="_blank"
                 rel="noreferrer"
-                className="underline underline-offset-4 decoration-neutral-500/40 transition-colors hover:text-white hover:decoration-neutral-200"
+                className="underline underline-offset-4 decoration-neutral-500 transition-colors hover:text-white hover:decoration-neutral-300"
               >
                 HackGT
               </a>
               .
-            </li>
-            <li>Raised in Delhi, grew up on science fairs &amp; competitive quizzing.</li>
-          </ul>
+            </p>
+            <p>Raised in Delhi, grew up on science fairs &amp; competitive quizzing.</p>
+          </div>
         </section>
 
         {/* PERSONAL */}
@@ -133,43 +133,43 @@ export default function Page() {
             </h2>
             <div className="flex-1 h-px bg-neutral-800/50" />
           </div>
-          <ul className="list-disc pl-5 space-y-5 leading-[1.75] text-neutral-200 marker:text-neutral-600 max-w-[68ch]">
-            <li>
-              In college I pulled off a fun stunt to land an internship - spelling out "Hire Me" with sticky
+          <div className="space-y-5 text-[1.0625rem] leading-[1.7] text-neutral-100 max-w-[56ch]">
+            <p>
+              In college I pulled off a fun stunt to land an internship — spelling out "Hire Me" with sticky
               notes on my dorm window. It went viral and got covered in{" "}
               <a
                 href="https://nypost.com/2019/10/31/college-student-lands-fortune-500-gig-by-writing-hire-me-with-sticky-notes/"
                 target="_blank"
                 rel="noreferrer"
-                className="underline underline-offset-4 decoration-neutral-500/40 transition-colors hover:text-white hover:decoration-neutral-200"
+                className="underline underline-offset-4 decoration-neutral-500 transition-colors hover:text-white hover:decoration-neutral-300"
               >
                 the New York Post
               </a>
               .
-            </li>
-            <li>
+            </p>
+            <p>
               I've always loved hardware. My parents bought me my first Raspberry Pi when I was 14 and I built
               wearable glasses to aid the visually impaired. The project earned me an{" "}
               <a
                 href="https://yourstory.com/2017/06/gursimran-singh"
                 target="_blank"
                 rel="noreferrer"
-                className="underline underline-offset-4 decoration-neutral-500/40 transition-colors hover:text-white hover:decoration-neutral-200"
+                className="underline underline-offset-4 decoration-neutral-500 transition-colors hover:text-white hover:decoration-neutral-300"
               >
                 award from Michael Phelps
               </a>
               .
-            </li>
-            <li>
+            </p>
+            <p>
               Fitness is a huge part of my life. Over the past few years I've lost lbs, built muscle, and
               tracked progress obsessively on Strava and Hevy. I've trained in boxing and CrossFit, and spend a
               lot of time kayaking or on the rowing erg.
-            </li>
-            <li>
+            </p>
+            <p>
               I'm a big sports fan and love watching live games. My favorite teams are the LA Clippers and the
               Philadelphia Eagles. By pure luck, I've been interviewed a few times on ESPN and TNT during games.
-            </li>
-          </ul>
+            </p>
+          </div>
         </section>
 
         {/* LINKS */}
@@ -184,7 +184,7 @@ export default function Page() {
           </div>
           <nav className="flex flex-wrap gap-3">
             <a
-              className="rounded-full border border-neutral-800/60 bg-neutral-900/30 px-4 py-2 text-sm text-neutral-300 transition-all duration-200 hover:border-neutral-600 hover:bg-neutral-800/60 hover:text-white"
+              className="rounded-full border border-neutral-700 bg-neutral-800/50 px-4 py-2 text-sm text-neutral-100 transition-all duration-200 hover:border-neutral-500 hover:bg-neutral-700/60"
               href="https://www.linkedin.com/in/pingthesingh/"
               target="_blank"
               rel="noreferrer"
@@ -192,7 +192,7 @@ export default function Page() {
               LinkedIn
             </a>
             <a
-              className="rounded-full border border-neutral-800/60 bg-neutral-900/30 px-4 py-2 text-sm text-neutral-300 transition-all duration-200 hover:border-neutral-600 hover:bg-neutral-800/60 hover:text-white"
+              className="rounded-full border border-neutral-700 bg-neutral-800/50 px-4 py-2 text-sm text-neutral-100 transition-all duration-200 hover:border-neutral-500 hover:bg-neutral-700/60"
               href="https://github.com/gsymmy30"
               target="_blank"
               rel="noreferrer"
@@ -200,7 +200,7 @@ export default function Page() {
               GitHub
             </a>
             <a
-              className="rounded-full border border-neutral-800/60 bg-neutral-900/30 px-4 py-2 text-sm text-neutral-300 transition-all duration-200 hover:border-neutral-600 hover:bg-neutral-800/60 hover:text-white"
+              className="rounded-full border border-neutral-700 bg-neutral-800/50 px-4 py-2 text-sm text-neutral-100 transition-all duration-200 hover:border-neutral-500 hover:bg-neutral-700/60"
               href="https://x.com/gsymmy"
               target="_blank"
               rel="noreferrer"
@@ -208,7 +208,7 @@ export default function Page() {
               X
             </a>
             <a
-              className="rounded-full border border-neutral-800/60 bg-neutral-900/30 px-4 py-2 text-sm text-neutral-300 transition-all duration-200 hover:border-neutral-600 hover:bg-neutral-800/60 hover:text-white"
+              className="rounded-full border border-neutral-700 bg-neutral-800/50 px-4 py-2 text-sm text-neutral-100 transition-all duration-200 hover:border-neutral-500 hover:bg-neutral-700/60"
               href="mailto:gsymmy@gmail.com"
             >
               Email
