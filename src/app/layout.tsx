@@ -28,23 +28,23 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://gsym.me"),
   title: "Gursimran Singh",
   description:
-    "Product Manager at Microsoft Azure. CS + Design at Georgia Tech. Focused on AIOps, observability, devtools, hardware, and fitness.",
+    "Technical Program Manager at Google DeepMind. Previously Product at Microsoft Azure. CS + Design at Georgia Tech.",
   keywords: [
     "Gursimran Singh",
     "gsym",
     "gsymmy",
-    "Product Manager",
+    "Technical Program Manager",
+    "TPM",
+    "Google DeepMind",
+    "DeepMind",
     "Microsoft Azure",
-    "AIOps",
-    "Observability",
-    "Developer Tools",
     "Georgia Tech",
   ],
   alternates: { canonical: "/" },
   openGraph: {
     title: "Gursimran Singh",
     description:
-      "Product Manager at Microsoft Azure. CS + Design at Georgia Tech. Focused on AIOps, observability, and devtools.",
+      "Technical Program Manager at Google DeepMind. Previously Product at Microsoft Azure. CS + Design at Georgia Tech.",
     url: "https://gsym.me",
     siteName: "gsym.me",
     images: [
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gursimran Singh",
     description:
-      "Product Manager at Microsoft Azure. CS + Design at Georgia Tech. Focused on AIOps, observability, and devtools.",
+      "Technical Program Manager at Google DeepMind. Previously Product at Microsoft Azure. CS + Design at Georgia Tech.",
     images: ["/og.png"],
     creator: "@gsymmy", // update if different or remove if not used
   },
@@ -86,8 +86,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@type": "Person",
     name: "Gursimran Singh",
     url: "https://gsym.me",
-    jobTitle: "Product Manager",
-    worksFor: { "@type": "Organization", name: "Microsoft" },
+    jobTitle: "Technical Program Manager",
+    worksFor: { "@type": "Organization", name: "Google DeepMind" },
     alumniOf: { "@type": "CollegeOrUniversity", name: "Georgia Tech" },
     sameAs: [
       "https://www.linkedin.com/in/pingthesingh/",

@@ -56,7 +56,7 @@ export default function Page() {
             <p
               className={`${martianMono.className} mt-3 text-[1.05rem] text-neutral-300/95 max-w-[52ch]`}
             >
-              Product Manager @ Microsoft Azure
+              TPM @ Google DeepMind
             </p>
             <p
               className={`${martianMono.className} mt-3 text-neutral-400`}
@@ -85,7 +85,8 @@ export default function Page() {
             About
           </h2>
           <ul className="mt-4 list-disc pl-5 space-y-3 leading-relaxed text-neutral-200 marker:text-neutral-500/70 max-w-[72ch]">
-            <li>Product @ Microsoft Azure, building developer tools in AIOps/Observability.</li>
+            <li>Technical Program Manager @ Google DeepMind.</li>
+            <li>Previously Product @ Microsoft Azure, building developer tools in AIOps/Observability.</li>
             <li>
               CS + Design @ Georgia Tech, focused on computer vision, founded a{" "}
               <a
