@@ -56,12 +56,20 @@ export default function Page() {
             <p
               className={`${martianMono.className} mt-3 text-[1.05rem] text-neutral-300/95 max-w-[52ch]`}
             >
-              TPM @ Google DeepMind
+              TPM @{" "}
+              <a
+                href="https://deepmind.google/"
+                target="_blank"
+                rel="noreferrer"
+                className="underline underline-offset-4 decoration-neutral-500/40 transition-colors hover:text-white hover:decoration-neutral-200"
+              >
+                Google DeepMind
+              </a>
             </p>
             <p
               className={`${martianMono.className} mt-3 text-neutral-400`}
             >
-              Seattle, WA
+              San Francisco, CA
             </p>
           </div>
 
@@ -86,7 +94,7 @@ export default function Page() {
           </h2>
           <ul className="mt-4 list-disc pl-5 space-y-3 leading-relaxed text-neutral-200 marker:text-neutral-500/70 max-w-[72ch]">
             <li>Technical Program Manager @ Google DeepMind.</li>
-            <li>Previously Product @ Microsoft Azure, building developer tools in AIOps/Observability.</li>
+            <li>previously - Product @ Microsoft Azure, working on Azure Observability and AIOps.</li>
             <li>
               CS + Design @ Georgia Tech, focused on computer vision, founded a{" "}
               <a
@@ -150,19 +158,6 @@ export default function Page() {
               Fitness is a huge part of my life. Over the past few years I’ve lost lbs, built muscle, and
               tracked progress obsessively on Strava and Hevy. I’ve trained in boxing and CrossFit, and spend a
               lot of time kayaking or on the rowing erg.
-            </li>
-            <li>
-              Living in the Pacific Northwest means endless trails - I spend weekends hiking and rating routes
-              on{" "}
-              <a
-                href="https://www.alltrails.com/members/gursimran-singh-33"
-                target="_blank"
-                rel="noreferrer"
-                className="underline underline-offset-4 decoration-neutral-500/40 transition-colors hover:text-white hover:decoration-neutral-200"
-              >
-                AllTrails
-              </a>
-              .
             </li>
             <li>
               I’m a big sports fan and love watching live games. My favorite teams are the LA Clippers and the
