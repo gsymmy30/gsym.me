@@ -62,7 +62,7 @@ export default function PressPage() {
   ];
 
   return (
-    <main className="min-h-screen px-8 py-20 md:py-32">
+    <main className="min-h-screen px-6 sm:px-8 py-20 md:py-32">
       <div className="mx-auto max-w-[540px]">
         <Link
           href="/"

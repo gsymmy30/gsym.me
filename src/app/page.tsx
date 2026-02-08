@@ -32,12 +32,12 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="min-h-screen px-8 py-20 md:py-32">
+    <main className="min-h-screen px-6 sm:px-8 py-20 md:py-32">
       <div className="mx-auto max-w-[620px]">
         {/* Header */}
-        <header className="flex items-start justify-between gap-8">
+        <header className="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-6 sm:gap-8">
           <div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-[-0.04em] leading-none pt-3 pb-2 bg-gradient-to-r from-white to-[#a3a3a3] bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-[-0.04em] leading-none pt-3 pb-2 bg-gradient-to-r from-white to-[#a3a3a3] bg-clip-text text-transparent">
               Gursimran
               <br />
               Singh
@@ -60,7 +60,7 @@ export default function Page() {
               </p>
             </div>
           </div>
-          <div className="relative group shrink-0">
+          <div className="relative group shrink-0 w-[110px] h-[110px] sm:w-[140px] sm:h-[140px] md:w-[170px] md:h-[170px]">
             <div className="absolute -inset-3 bg-gradient-to-br from-indigo-500/15 via-purple-500/10 to-transparent rounded-3xl blur-xl transition-all duration-700 group-hover:from-indigo-500/30 group-hover:via-purple-500/20" />
             <div className="absolute -inset-[1px] bg-gradient-to-br from-white/20 via-white/5 to-transparent rounded-2xl" />
             <Image
@@ -69,7 +69,7 @@ export default function Page() {
               width={170}
               height={170}
               priority
-              className="relative rounded-2xl transition-all duration-500 group-hover:scale-[1.02]"
+              className="relative rounded-2xl transition-all duration-500 group-hover:scale-[1.02] w-full h-full object-cover"
             />
           </div>
         </header>
