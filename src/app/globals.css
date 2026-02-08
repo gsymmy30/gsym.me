@@ -15,6 +15,9 @@ body {
   background: var(--bg);
   min-height: 100vh;
   color: var(--text);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.08), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(139, 92, 246, 0.05), transparent);
 }
 
 ::selection {
@@ -31,21 +34,26 @@ body {
 .link-hover {
   position: relative;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .link-hover::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -1px;
+  bottom: -2px;
   width: 0;
   height: 1px;
-  background: var(--text);
-  transition: width 0.2s ease;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  transition: width 0.3s ease;
 }
 
 .link-hover:hover::after {
   width: 100%;
+}
+
+.link-hover:hover {
+  color: #fff;
 }
 
 /* Section label styling */
@@ -69,18 +77,29 @@ body {
 
 /* Smooth page transitions */
 main {
-  animation: fadeIn 0.6s ease-out;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Premium text rendering */
+h1, h2, h3 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle text glow on name hover */
+h1:hover {
+  text-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
 }
 
 /* Subtle gradient glow */

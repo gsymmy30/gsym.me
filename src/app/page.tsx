@@ -42,8 +42,8 @@ export default function Page() {
               <br />
               Singh
             </h1>
-            <div className="mt-6">
-              <p className="text-[#fafafa] font-medium">
+            <div className="mt-6 space-y-1">
+              <p className="text-[#fafafa] font-medium tracking-tight">
                 Technical Program Manager
               </p>
               <p className="text-[#737373]">
@@ -51,24 +51,25 @@ export default function Page() {
                   href="https://deepmind.google/"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-indigo-300 transition-colors duration-300"
                 >
                   Google DeepMind
                 </a>
                 <span className="mx-2 text-[#404040]">/</span>
-                San Francisco
+                <span className="text-[#525252]">San Francisco</span>
               </p>
             </div>
           </div>
           <div className="relative group shrink-0">
-            <div className="absolute -inset-3 bg-gradient-to-br from-indigo-500/25 via-purple-500/15 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
+            <div className="absolute -inset-3 bg-gradient-to-br from-indigo-500/15 via-purple-500/10 to-transparent rounded-3xl blur-xl transition-all duration-700 group-hover:from-indigo-500/30 group-hover:via-purple-500/20" />
+            <div className="absolute -inset-[1px] bg-gradient-to-br from-white/20 via-white/5 to-transparent rounded-2xl" />
             <Image
               src="/headshot.jpg"
               alt="Gursimran Singh"
               width={170}
               height={170}
               priority
-              className="relative rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500 ring-1 ring-white/10"
+              className="relative rounded-2xl transition-all duration-500 group-hover:scale-[1.02]"
             />
           </div>
         </header>
@@ -87,7 +88,7 @@ export default function Page() {
                 href="https://www.youtube.com/watch?v=0-CumFHE8eo"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#e5e5e5] underline decoration-[#404040] hover:decoration-[#737373]"
+                className="text-[#e5e5e5] underline decoration-[#404040] hover:text-white hover:decoration-indigo-400/50 transition-all duration-300"
               >
                 scooter-safety startup
               </a>
@@ -96,7 +97,7 @@ export default function Page() {
                 href="https://devpost.com/gursimransingh"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#e5e5e5] underline decoration-[#404040] hover:decoration-[#737373]"
+                className="text-[#e5e5e5] underline decoration-[#404040] hover:text-white hover:decoration-indigo-400/50 transition-all duration-300"
               >
                 HackGT
               </a>
@@ -117,7 +118,7 @@ export default function Page() {
                 href="https://nypost.com/2019/10/31/college-student-lands-fortune-500-gig-by-writing-hire-me-with-sticky-notes/"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#e5e5e5] underline decoration-[#404040] hover:decoration-[#737373]"
+                className="text-[#e5e5e5] underline decoration-[#404040] hover:text-white hover:decoration-indigo-400/50 transition-all duration-300"
               >
                 the New York Post
               </a>
@@ -130,7 +131,7 @@ export default function Page() {
                 href="https://yourstory.com/2017/06/gursimran-singh"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#e5e5e5] underline decoration-[#404040] hover:decoration-[#737373]"
+                className="text-[#e5e5e5] underline decoration-[#404040] hover:text-white hover:decoration-indigo-400/50 transition-all duration-300"
               >
                 award from Michael Phelps
               </a>
@@ -185,9 +186,9 @@ export default function Page() {
         </nav>
 
         {/* Footer */}
-        <footer className="mt-12 flex items-center justify-between text-xs text-[#525252]">
+        <footer className="mt-16 flex items-center justify-between text-xs text-[#525252]">
           <span>© {new Date().getFullYear()}</span>
-          <span className="font-mono tracking-wider text-[#404040]">GS</span>
+          <span className="font-mono tracking-widest text-[#404040] hover:text-indigo-400 transition-colors duration-300 cursor-default">GS</span>
         </footer>
       </div>
 
