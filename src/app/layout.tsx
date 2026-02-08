@@ -1,27 +1,9 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Martian_Mono, Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
-import Script from "next/script"; // ← added
 
 const inter = Inter({ subsets: ["latin"] });
-const martianMono = Martian_Mono({
-  subsets: ["latin"],
-  weight: ["300"], // pick what you want
-  variable: "--font-martian",
-});
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-montserrat",
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-montserrat",
-});
 
 
 export const metadata: Metadata = {
@@ -110,7 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     givenName: "Gursimran",
     familyName: "Singh",
     url: "https://gsym.me",
-    image: "https://gsym.me/simmy.jpg",
+    image: "https://gsym.me/headshot.jpg",
     jobTitle: "Technical Program Manager",
     worksFor: {
       "@type": "Organization",
@@ -143,7 +125,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
-     <body  className={`${poppins.className} bg-neutral-950 text-neutral-100 antialiased`}>
+      <body className={`${inter.className} antialiased`}>
 
         {/* Structured data for rich results */}
         <script
