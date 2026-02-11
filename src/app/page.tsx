@@ -37,39 +37,39 @@ export default function Page() {
         {/* Header */}
         <header className="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-6 sm:gap-8">
           <div>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-[-0.04em] leading-none pt-3 pb-2 bg-gradient-to-r from-white to-[#a3a3a3] bg-clip-text text-transparent">
+            <h1 className="display-name text-4xl sm:text-5xl md:text-7xl font-semibold leading-none pt-3 pb-2 bg-gradient-to-r from-[#f3efe7] to-[#b3ab9e] bg-clip-text text-transparent">
               Gursimran
               <br />
               Singh
             </h1>
             <div className="mt-6 space-y-1">
-              <p className="text-[#fafafa] font-medium tracking-tight">
+              <p className="meta-eyebrow">
                 Technical Program Manager
               </p>
-              <p className="text-[#737373]">
+              <p className="text-[#817a6f]">
                 <a
                   href="https://deepmind.google/"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-indigo-300 transition-colors duration-300"
+                  className="hover:text-[#e8decb] transition-colors duration-200"
                 >
                   Google DeepMind
                 </a>
-                <span className="mx-2 text-[#404040]">/</span>
-                <span className="text-[#525252]">San Francisco</span>
+                <span className="mx-2 text-[#4b4a46]">/</span>
+                <span className="text-[#5d5b56]">San Francisco</span>
               </p>
             </div>
           </div>
           <div className="relative group shrink-0 w-[110px] h-[110px] sm:w-[140px] sm:h-[140px] md:w-[170px] md:h-[170px]">
-            <div className="absolute -inset-3 bg-gradient-to-br from-indigo-500/15 via-purple-500/10 to-transparent rounded-3xl blur-xl transition-all duration-700 group-hover:from-indigo-500/20 group-hover:via-purple-500/10" />
-            <div className="absolute -inset-[1px] bg-gradient-to-br from-white/20 via-white/5 to-transparent rounded-2xl" />
+            <div className="absolute -inset-3 bg-gradient-to-br from-[#c4ab7f]/12 via-[#8f7c5b]/6 to-transparent rounded-3xl blur-xl transition-all duration-700 group-hover:from-[#d3bf9c]/16 group-hover:via-[#8f7c5b]/7" />
+            <div className="absolute -inset-[1px] border border-[#4e493f]/45 rounded-2xl" />
             <Image
               src="/headshot.jpg"
               alt="Gursimran Singh"
               width={170}
               height={170}
               priority
-              className="relative rounded-2xl transition-all duration-500 group-hover:scale-[1.02] group-hover:translate-y-[-2px] w-full h-full object-cover"
+              className="relative rounded-2xl transition-all duration-500 group-hover:scale-[1.01] group-hover:translate-y-[-1px] w-full h-full object-cover saturate-[0.92] contrast-105"
             />
           </div>
         </header>
@@ -77,7 +77,7 @@ export default function Page() {
         {/* About */}
         <section className="mt-16">
                         <h2 className="section-label mb-6">About</h2>
-                        <div className="space-y-4 text-[15px] leading-[1.8] text-[#a3a3a3]">            <p>
+                        <div className="space-y-4 text-[15px] leading-[1.8] body-copy">            <p>
               Previously Product Manager at Microsoft Azure, working on
               Azure Observability and AIOps.
             </p>
@@ -87,7 +87,7 @@ export default function Page() {
                 href="https://www.youtube.com/watch?v=0-CumFHE8eo"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#e5e5e5] underline decoration-[#404040] hover:text-white hover:decoration-indigo-400/50 transition-all duration-300"
+                className="inline-ref"
               >
                 scooter-safety startup
               </a>
@@ -96,7 +96,7 @@ export default function Page() {
                 href="https://devpost.com/gursimransingh"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#e5e5e5] underline decoration-[#404040] hover:text-white hover:decoration-indigo-400/50 transition-all duration-300"
+                className="inline-ref"
               >
                 HackGT
               </a>
@@ -109,7 +109,7 @@ export default function Page() {
         {/* Personal */}
         <section className="mt-14">
           <h2 className="section-label mb-6">Personal</h2>
-          <div className="space-y-4 text-[15px] leading-[1.75] text-[#a3a3a3]">
+          <div className="space-y-4 text-[15px] leading-[1.75] body-copy">
             <p>
               In college I spelled out "Hire Me" with sticky notes on my dorm
               window. It went viral and got covered in{" "}
@@ -117,7 +117,7 @@ export default function Page() {
                 href="https://nypost.com/2019/10/31/college-student-lands-fortune-500-gig-by-writing-hire-me-with-sticky-notes/"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#e5e5e5] underline decoration-[#404040] hover:text-white hover:decoration-indigo-400/50 transition-all duration-300"
+                className="inline-ref"
               >
                 the New York Post
               </a>
@@ -130,7 +130,7 @@ export default function Page() {
                 href="https://yourstory.com/2017/06/gursimran-singh"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#e5e5e5] underline decoration-[#404040] hover:text-white hover:decoration-indigo-400/50 transition-all duration-300"
+                className="inline-ref"
               >
                 award from Michael Phelps
               </a>
@@ -151,7 +151,7 @@ export default function Page() {
         </section>
 
         {/* Links */}
-        <nav className="mt-14 pt-8 border-t border-[#262626] flex flex-wrap gap-x-5 gap-y-2 text-sm text-[#737373]">
+        <nav className="mt-14 pt-8 border-t border-[#2b2d30] flex flex-wrap gap-x-5 gap-y-2 text-sm text-[#817d75]">
           <a
             href="https://www.linkedin.com/in/pingthesingh/"
             target="_blank"
@@ -160,7 +160,7 @@ export default function Page() {
           >
             LinkedIn
           </a>
-          <span className="text-[#404040]">·</span>
+          <span className="text-[#4a4b4e]">·</span>
           <a
             href="https://github.com/gsymmy30"
             target="_blank"
@@ -169,7 +169,7 @@ export default function Page() {
           >
             GitHub
           </a>
-          <span className="text-[#404040]">·</span>
+          <span className="text-[#4a4b4e]">·</span>
           <a
             href="https://x.com/gsymmy"
             target="_blank"
@@ -178,23 +178,23 @@ export default function Page() {
           >
             X
           </a>
-          <span className="text-[#404040]">·</span>
+          <span className="text-[#4a4b4e]">·</span>
           <a href="mailto:gsymmy@gmail.com" className="link-hover hover:text-white">
             Email
           </a>
         </nav>
 
         {/* Footer */}
-        <footer className="mt-16 flex items-center justify-between text-xs text-[#525252]">
+        <footer className="mt-16 flex items-center justify-between text-xs text-[#656157]">
           <span>© {new Date().getFullYear()}</span>
-          <span className="font-mono tracking-widest text-[#404040] hover:text-indigo-400 transition-colors duration-300 cursor-default">GS</span>
+          <span className="font-mono tracking-[0.25em] text-[#565047] hover:text-[#bca581] transition-colors duration-200 cursor-default">GS</span>
         </footer>
       </div>
 
       {/* Easter egg banner */}
       <div
         id="team-banner"
-        className="fixed top-4 left-1/2 z-50 -translate-x-1/2 rounded-full border border-[#262626] bg-[#171717]/90 px-4 py-2 text-sm text-white shadow-lg backdrop-blur transition
+        className="fixed top-4 left-1/2 z-50 -translate-x-1/2 rounded-full border border-[#3a362f] bg-[#171614]/90 px-4 py-2 text-sm text-[#f6f1e9] shadow-lg backdrop-blur transition
                    opacity-0 translate-y-2 pointer-events-none"
       >
         Instagram @gsymmy

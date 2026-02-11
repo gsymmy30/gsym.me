@@ -87,7 +87,8 @@ export function createConfig(width: number, height: number): GridConfig {
     isMobile,
     lensRadius: isMobile ? 0 : 200,
     lensStrength: 25,
-    maxAnnotations: isMobile ? 2 : 4,
+    // Keep only the grid background; disable decorative annotation shapes.
+    maxAnnotations: 0,
   };
 }
 

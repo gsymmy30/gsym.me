@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0a0a0a;
-  --text: #fafafa;
-  --muted: #a3a3a3;
-  --border: #262626;
+  --bg: #0c0d0e;
+  --text: #f5f3ed;
+  --muted: #b4ada1;
+  --border: #2a2c2f;
+  --accent: #a9926a;
+  --accent-soft: #c0ae90;
 }
 
 html {
@@ -15,18 +17,20 @@ body {
   background: var(--bg);
   min-height: 100vh;
   color: var(--text);
+  font-family: "Inter", "Inter Tight", "Manrope", "SF Pro Text", "Avenir Next", "Segoe UI", sans-serif;
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.08), transparent),
-    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(139, 92, 246, 0.05), transparent);
+    radial-gradient(ellipse 90% 60% at 48% -22%, rgba(184, 157, 112, 0.06), transparent 60%),
+    radial-gradient(ellipse 70% 45% at 100% 0%, rgba(96, 121, 135, 0.05), transparent 64%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(0, 0, 0, 0));
 }
 
 ::selection {
-  background: #6366f1;
-  color: #fafafa;
+  background: #9f8760;
+  color: #fdfbf8;
 }
 
 :focus-visible {
-  outline: 2px solid #6366f1;
+  outline: 2px solid #ac9064;
   outline-offset: 2px;
 }
 
@@ -44,8 +48,8 @@ body {
   bottom: -2px;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, #6366f1, #a855f7);
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, #7f7a70, var(--accent));
+  transition: width 0.25s ease;
 }
 
 .link-hover:hover::after {
@@ -61,18 +65,19 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-size: 11px;
+  font-family: "Inter", "Inter Tight", "Manrope", "SF Pro Text", "Segoe UI", sans-serif;
+  font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #525252;
+  color: #7e786d;
 }
 
 .section-label::after {
   content: "";
   width: 40px;
   height: 1px;
-  background: #262626;
+  background: #383a3f;
 }
 
 /* Smooth page transitions */
@@ -97,12 +102,39 @@ h1, h2, h3 {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle text glow on name hover */
-h1:hover {
-  text-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
+.display-name {
+  font-family: "Inter Tight", "Inter", "Manrope", "SF Pro Display", "Avenir Next", "Segoe UI", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.meta-eyebrow {
+  font-family: "Inter", "Inter Tight", "Manrope", "SF Pro Text", "Segoe UI", sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: #8d8476;
+}
+
+.body-copy {
+  color: #b5afa5;
+}
+
+.inline-ref {
+  color: #ddd7cb;
+  text-decoration: underline;
+  text-decoration-color: #474139;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.inline-ref:hover {
+  color: #f2eee6;
+  text-decoration-color: var(--accent-soft);
 }
 
 /* Subtle gradient glow */
 .glow {
-  box-shadow: 0 0 60px -12px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 52px -14px rgba(184, 157, 112, 0.14);
 }
