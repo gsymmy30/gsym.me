@@ -61,7 +61,7 @@ export default function Page() {
             </div>
           </div>
           <div className="relative group shrink-0 w-[110px] h-[110px] sm:w-[140px] sm:h-[140px] md:w-[170px] md:h-[170px]">
-            <div className="absolute -inset-3 bg-gradient-to-br from-indigo-500/15 via-purple-500/10 to-transparent rounded-3xl blur-xl transition-all duration-700 group-hover:from-indigo-500/30 group-hover:via-purple-500/20" />
+            <div className="absolute -inset-3 bg-gradient-to-br from-indigo-500/15 via-purple-500/10 to-transparent rounded-3xl blur-xl transition-all duration-700 group-hover:from-indigo-500/20 group-hover:via-purple-500/10" />
             <div className="absolute -inset-[1px] bg-gradient-to-br from-white/20 via-white/5 to-transparent rounded-2xl" />
             <Image
               src="/headshot.jpg"
@@ -69,16 +69,15 @@ export default function Page() {
               width={170}
               height={170}
               priority
-              className="relative rounded-2xl transition-all duration-500 group-hover:scale-[1.02] w-full h-full object-cover"
+              className="relative rounded-2xl transition-all duration-500 group-hover:scale-[1.02] group-hover:translate-y-[-2px] w-full h-full object-cover"
             />
           </div>
         </header>
 
         {/* About */}
         <section className="mt-16">
-          <h2 className="section-label mb-6">About</h2>
-          <div className="space-y-4 text-[15px] leading-[1.75] text-[#a3a3a3]">
-            <p>
+                        <h2 className="section-label mb-6">About</h2>
+                        <div className="space-y-4 text-[15px] leading-[1.8] text-[#a3a3a3]">            <p>
               Previously Product Manager at Microsoft Azure, working on
               Azure Observability and AIOps.
             </p>
