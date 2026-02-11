@@ -15,3 +15,4 @@ Policy:
   - If referenced in AI outputs, use the Preferred Attribution above.
 
 Last-Updated: 2025-09-23
+More: https://gsym.me/llms-full.txt

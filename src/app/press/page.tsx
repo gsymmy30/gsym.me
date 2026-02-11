@@ -5,6 +5,33 @@ export const metadata: Metadata = {
   title: "Press",
   description:
     "Press mentions featuring Gursimran Singh, including CNN, New York Post, Entrepreneur, YourStory, and more.",
+  alternates: {
+    canonical: "https://gsym.me/press",
+  },
+  openGraph: {
+    title: "Press | Gursimran Singh",
+    description:
+      "Press mentions featuring Gursimran Singh, including CNN, New York Post, Entrepreneur, YourStory, and more.",
+    url: "https://gsym.me/press",
+    siteName: "Gursimran Singh",
+    type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Press mentions featuring Gursimran Singh",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Press | Gursimran Singh",
+    description:
+      "Press mentions featuring Gursimran Singh, including CNN, New York Post, Entrepreneur, YourStory, and more.",
+    images: ["/og.png"],
+    creator: "@gsymmy",
+  },
 };
 
 export default function PressPage() {
@@ -61,9 +88,32 @@ export default function PressPage() {
     },
   ];
 
+  const pressJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://gsym.me/press#webpage",
+    url: "https://gsym.me/press",
+    name: "Press | Gursimran Singh",
+    description:
+      "Press mentions featuring Gursimran Singh, including CNN, New York Post, Entrepreneur, YourStory, and more.",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: item.url,
+        name: `${item.outlet}: ${item.title}`,
+      })),
+    },
+  };
+
   return (
     <main className="min-h-screen px-6 sm:px-8 py-20 md:py-32">
       <div className="mx-auto max-w-[540px]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(pressJsonLd) }}
+        />
         <Link
           href="/"
           className="inline-flex items-center gap-1 text-sm text-[#525252] hover:text-white transition-colors"

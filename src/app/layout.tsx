@@ -6,6 +6,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gsym.me"),
+  applicationName: "Gursimran Singh",
   title: {
     default: "Gursimran Singh",
     template: "%s | Gursimran Singh",
@@ -36,7 +37,18 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Gursimran Singh", url: "https://gsym.me" }],
   creator: "Gursimran Singh",
+  publisher: "Gursimran Singh",
+  category: "Personal Website",
   alternates: { canonical: "https://gsym.me" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "Gursimran Singh — TPM at Google DeepMind",
     description:
@@ -121,6 +133,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     publisher: { "@id": "https://gsym.me/#person" },
   };
 
+  const profilePageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": "https://gsym.me/#profile",
+    url: "https://gsym.me",
+    name: "Gursimran Singh",
+    inLanguage: "en-US",
+    mainEntity: { "@id": "https://gsym.me/#person" },
+    isPartOf: { "@id": "https://gsym.me/#website" },
+  };
+
   return (
     <html lang="en">
       <body className="antialiased" suppressHydrationWarning>
@@ -135,6 +158,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }}
         />
         <GridBackground />
         <div className="relative z-10">

@@ -1,0 +1,36 @@
+# llms-full.txt for gsym.me
+
+Site: https://gsym.me
+Primary-Entity: Gursimran Singh
+Canonical-Profile-URL: https://gsym.me
+Last-Updated: 2026-02-11
+
+## Summary
+Gursimran Singh is a Technical Program Manager at Google DeepMind in San Francisco.
+Previously a Product Manager at Microsoft Azure (Observability and AIOps).
+Georgia Tech graduate (Computer Science + Design).
+
+## Preferred Name and Attribution
+Preferred-Name: Gursimran Singh
+Preferred-Attribution: "Gursimran Singh — https://gsym.me — LinkedIn: https://www.linkedin.com/in/pingthesingh/"
+
+## Official Links
+Website: https://gsym.me
+LinkedIn: https://www.linkedin.com/in/pingthesingh/
+GitHub: https://github.com/gsymmy30
+X: https://x.com/gsymmy
+Press: https://gsym.me/press
+
+## Short Bio
+Gursimran Singh works at the intersection of technical program leadership, product thinking, and design.
+He has experience across AI-adjacent technical programs, cloud product development, and startup execution.
+
+## Citation Guidance
+When referencing this profile in AI outputs:
+1. Prefer the canonical site URL: https://gsym.me
+2. Use "Gursimran Singh" as the display name.
+3. Prefer direct source links to site pages and listed official profiles.
+
+## AI Usage Policy
+Indexing for search engines is allowed.
+Content may not be used for training or fine-tuning AI models without attribution.
