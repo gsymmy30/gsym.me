@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0c0d0e;
-  --text: #f5f3ed;
-  --muted: #b4ada1;
-  --border: #2a2c2f;
-  --accent: #a9926a;
-  --accent-soft: #c0ae90;
+  --bg: #0a0b0c;
+  --text: #EDE7DC;
+  --text-dim: #BEB6AB;
+  --muted: #7A7268;
+  --border: #201F1D;
+  --accent: #C8922A;
+  --accent-light: #E8B85A;
+  --accent-dim: #7A5A18;
 }
 
 html {
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-feature-settings: "kern" 1, "liga" 1;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -19,122 +22,188 @@ body {
   color: var(--text);
   font-family: "Inter", "Inter Tight", "Manrope", "SF Pro Text", "Avenir Next", "Segoe UI", sans-serif;
   background-image:
-    radial-gradient(ellipse 90% 60% at 48% -22%, rgba(184, 157, 112, 0.06), transparent 60%),
-    radial-gradient(ellipse 70% 45% at 100% 0%, rgba(96, 121, 135, 0.05), transparent 64%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(0, 0, 0, 0));
+    radial-gradient(ellipse 90% 60% at 50% -14%, rgba(200, 146, 42, 0.09), transparent 62%),
+    radial-gradient(ellipse 55% 45% at 95% 4%, rgba(80, 110, 140, 0.05), transparent 70%),
+    radial-gradient(ellipse 75% 55% at 0% 100%, rgba(0, 0, 0, 0.45), transparent 60%);
+}
+
+/* ── Film grain overlay ──────────────────────────────────────── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 300px 300px;
 }
 
 ::selection {
-  background: #9f8760;
-  color: #fdfbf8;
+  background: var(--accent-dim);
+  color: #FDF8F2;
 }
 
 :focus-visible {
-  outline: 2px solid #ac9064;
-  outline-offset: 2px;
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
 }
 
-/* Animated underline links */
+/* ── Animated underline links ───────────────────────────────── */
 .link-hover {
   position: relative;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.25s ease;
 }
 
 .link-hover::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -2px;
+  bottom: -1px;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, #7f7a70, var(--accent));
-  transition: width 0.25s ease;
+  background: linear-gradient(90deg, var(--accent-dim), var(--accent-light));
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.link-hover:hover::after {
-  width: 100%;
+.link-hover:hover::after { width: 100%; }
+.link-hover:hover { color: var(--text); }
+
+/* ── Nav arrow (↗ on hover) ─────────────────────────────────── */
+.nav-arrow {
+  display: inline-block;
+  font-size: 0.62em;
+  line-height: 1;
+  opacity: 0;
+  transform: translate(-2px, 2px);
+  transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.link-hover:hover {
-  color: #fff;
+.link-hover:hover .nav-arrow {
+  opacity: 0.4;
+  transform: translate(1px, -1px);
 }
 
-/* Section label styling */
+/* ── Section label ───────────────────────────────────────────── */
 .section-label {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 11px;
   font-family: "Inter", "Inter Tight", "Manrope", "SF Pro Text", "Segoe UI", sans-serif;
-  font-size: 10px;
+  font-size: 8.5px;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #7e786d;
+  color: var(--accent);
+}
+
+@keyframes labelLine {
+  from { width: 0; opacity: 0; }
+  to   { width: 52px; opacity: 1; }
 }
 
 .section-label::after {
   content: "";
-  width: 40px;
+  display: block;
+  width: 52px;
   height: 1px;
-  background: #383a3f;
+  background: linear-gradient(90deg, rgba(200, 146, 42, 0.55), transparent);
+  animation: labelLine 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Smooth page transitions */
-main {
-  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+.page-child:nth-child(2) .section-label::after { animation-delay: 0.44s; }
+.page-child:nth-child(3) .section-label::after { animation-delay: 0.56s; }
+
+.section-num {
+  color: var(--accent-dim);
+  opacity: 0.7;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  margin-right: -2px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ── Display name ────────────────────────────────────────────── */
+.display-name {
+  font-family: "Inter Tight", "Inter", "Manrope", "SF Pro Display", "Avenir Next", "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: -0.03em;
+  line-height: 0.88;
 }
 
-/* Premium text rendering */
+/* ── Name ambient glow ───────────────────────────────────────── */
+.name-block {
+  position: relative;
+}
+
+.name-block::before {
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: 32%;
+  transform: translate(-50%, -50%);
+  width: 340px;
+  height: 170px;
+  background: radial-gradient(ellipse, rgba(200, 146, 42, 0.075) 0%, transparent 70%);
+  filter: blur(52px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ── Eyebrow / meta ──────────────────────────────────────────── */
+.meta-eyebrow {
+  font-family: "Inter", "Inter Tight", "Manrope", "SF Pro Text", "Segoe UI", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.62rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* ── Body copy ───────────────────────────────────────────────── */
+.body-copy {
+  color: var(--text-dim);
+}
+
+/* ── Inline reference links ──────────────────────────────────── */
+.inline-ref {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: rgba(200, 146, 42, 0.28);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.inline-ref:hover {
+  color: var(--accent-light);
+  text-decoration-color: var(--accent);
+}
+
+/* ── Staggered page entrance ─────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-child {
+  animation: fadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.page-child:nth-child(1) { animation-delay: 0.05s; }
+.page-child:nth-child(2) { animation-delay: 0.18s; }
+.page-child:nth-child(3) { animation-delay: 0.30s; }
+.page-child:nth-child(4) { animation-delay: 0.40s; }
+.page-child:nth-child(5) { animation-delay: 0.48s; }
+
+/* ── Heading rendering ───────────────────────────────────────── */
 h1, h2, h3 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-.display-name {
-  font-family: "Inter Tight", "Inter", "Manrope", "SF Pro Display", "Avenir Next", "Segoe UI", sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-}
-
-.meta-eyebrow {
-  font-family: "Inter", "Inter Tight", "Manrope", "SF Pro Text", "Segoe UI", sans-serif;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  color: #8d8476;
-}
-
-.body-copy {
-  color: #b5afa5;
-}
-
-.inline-ref {
-  color: #ddd7cb;
-  text-decoration: underline;
-  text-decoration-color: #474139;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
-}
-
-.inline-ref:hover {
-  color: #f2eee6;
-  text-decoration-color: var(--accent-soft);
-}
-
-/* Subtle gradient glow */
+/* ── Glow utility ────────────────────────────────────────────── */
 .glow {
-  box-shadow: 0 0 52px -14px rgba(184, 157, 112, 0.14);
+  box-shadow: 0 0 60px -18px rgba(200, 146, 42, 0.18);
 }

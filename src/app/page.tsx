@@ -31,53 +31,99 @@ export default function Page() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  // Scroll progress bar
+  useEffect(() => {
+    const bar = document.getElementById("scroll-bar");
+    const onScroll = () => {
+      if (!bar) return;
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const pct = scrollHeight <= clientHeight ? 0 : (scrollTop / (scrollHeight - clientHeight)) * 100;
+      bar.style.width = `${pct}%`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Photo 3D tilt
+  const handlePhotoMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 11;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -11;
+    e.currentTarget.style.transition = "none";
+    e.currentTarget.style.transform = `perspective(800px) rotateX(${y}deg) rotateY(${x}deg)`;
+  };
+  const handlePhotoLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.transition = "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)";
+    e.currentTarget.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg)";
+  };
+
   return (
     <main className="min-h-screen px-6 sm:px-8 py-20 md:py-32">
-      <div className="mx-auto max-w-[620px]">
+
+      {/* Scroll progress bar */}
+      <div
+        id="scroll-bar"
+        className="fixed top-0 left-0 h-px pointer-events-none"
+        style={{ width: "0%", zIndex: 200, background: "linear-gradient(90deg, #7A5A18, #C8922A 60%, #E8B85A)" }}
+      />
+
+      <div className="mx-auto max-w-[640px]">
+
         {/* Header */}
-        <header className="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-6 sm:gap-8">
-          <div>
-            <h1 className="display-name text-4xl sm:text-5xl md:text-7xl font-semibold leading-none pt-3 pb-2 bg-gradient-to-r from-[#f3efe7] to-[#b3ab9e] bg-clip-text text-transparent">
+        <header className="page-child flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-6 sm:gap-10">
+
+          <div className="name-block">
+            <h1 className="display-name text-4xl sm:text-5xl md:text-7xl leading-none pt-3 pb-2 bg-gradient-to-r from-[#f3efe7] to-[#b3ab9e] bg-clip-text text-transparent">
               Gursimran
               <br />
               Singh
             </h1>
-            <div className="mt-6 space-y-1">
+            <div className="mt-7 space-y-2">
               <p className="meta-eyebrow">
                 Technical Program Manager
               </p>
-              <p className="text-[#817a6f]">
+              <p className="text-[#5E5A54] text-[13px]">
                 <a
                   href="https://deepmind.google/"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-[#e8decb] transition-colors duration-200"
+                  className="hover:text-[#E8B85A] transition-colors duration-200"
                 >
                   Google DeepMind
                 </a>
-                <span className="mx-2 text-[#4b4a46]">/</span>
-                <span className="text-[#5d5b56]">San Francisco</span>
+                <span className="mx-2 text-[#2E2D2A]">/</span>
+                <span className="text-[#46443F]">San Francisco</span>
               </p>
             </div>
           </div>
-          <div className="relative group shrink-0 w-[110px] h-[110px] sm:w-[140px] sm:h-[140px] md:w-[170px] md:h-[170px]">
-            <div className="absolute -inset-3 bg-gradient-to-br from-[#c4ab7f]/12 via-[#8f7c5b]/6 to-transparent rounded-3xl blur-xl transition-all duration-700 group-hover:from-[#d3bf9c]/16 group-hover:via-[#8f7c5b]/7" />
-            <div className="absolute -inset-[1px] border border-[#4e493f]/45 rounded-2xl" />
+
+          <div
+            className="relative group shrink-0 w-[100px] h-[100px] sm:w-[132px] sm:h-[132px] md:w-[158px] md:h-[158px]"
+            onMouseMove={handlePhotoMove}
+            onMouseLeave={handlePhotoLeave}
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <div className="absolute -inset-3 bg-gradient-to-br from-[#c8922a]/14 via-[#8f7c5b]/6 to-transparent rounded-3xl blur-xl transition-all duration-700 group-hover:from-[#d4a84e]/20" />
+            <div className="absolute -inset-[1px] border border-[#c8922a]/22 rounded-xl" />
             <Image
               src="/headshot.jpg"
               alt="Gursimran Singh"
-              width={170}
-              height={170}
+              width={158}
+              height={158}
               priority
-              className="relative rounded-2xl transition-all duration-500 group-hover:scale-[1.01] group-hover:translate-y-[-1px] w-full h-full object-cover saturate-[0.92] contrast-105"
+              className="relative rounded-xl w-full h-full object-cover saturate-[0.9] contrast-[1.04]"
             />
           </div>
         </header>
 
         {/* About */}
-        <section className="mt-16">
-                        <h2 className="section-label mb-6">About</h2>
-                        <div className="space-y-4 text-[15px] leading-[1.8] body-copy">            <p>
+        <section className="page-child mt-16">
+          <h2 className="section-label mb-6">
+            <span className="section-num">01</span>
+            About
+          </h2>
+          <div className="space-y-4 text-[15px] leading-[1.85] body-copy">
+            <p>
               Previously Product Manager at Microsoft Azure, working on
               Azure Observability and AIOps.
             </p>
@@ -107,9 +153,12 @@ export default function Page() {
         </section>
 
         {/* Personal */}
-        <section className="mt-14">
-          <h2 className="section-label mb-6">Personal</h2>
-          <div className="space-y-4 text-[15px] leading-[1.75] body-copy">
+        <section className="page-child mt-14">
+          <h2 className="section-label mb-6">
+            <span className="section-num">02</span>
+            Personal
+          </h2>
+          <div className="space-y-4 text-[15px] leading-[1.85] body-copy">
             <p>
               In college I spelled out "Hire Me" with sticky notes on my dorm
               window. It went viral and got covered in{" "}
@@ -151,44 +200,52 @@ export default function Page() {
         </section>
 
         {/* Links */}
-        <nav className="mt-14 pt-8 border-t border-[#2b2d30] flex flex-wrap gap-x-5 gap-y-2 text-sm text-[#817d75]">
+        <nav className="page-child mt-14 pt-8 border-t border-[#201F1D] flex items-center flex-wrap gap-y-2 gap-x-4 text-[#5A5650] text-[13px]">
           <a
             href="https://www.linkedin.com/in/pingthesingh/"
             target="_blank"
             rel="noreferrer"
-            className="link-hover hover:text-white"
+            className="link-hover hover:text-[#EDE7DC] inline-flex items-center gap-[3px]"
           >
-            LinkedIn
+            LinkedIn<span className="nav-arrow">↗</span>
           </a>
-          <span className="text-[#4a4b4e]">·</span>
+          <span className="w-px h-3 bg-[#252220] shrink-0" aria-hidden />
           <a
             href="https://github.com/gsymmy30"
             target="_blank"
             rel="noreferrer"
-            className="link-hover hover:text-white"
+            className="link-hover hover:text-[#EDE7DC] inline-flex items-center gap-[3px]"
           >
-            GitHub
+            GitHub<span className="nav-arrow">↗</span>
           </a>
-          <span className="text-[#4a4b4e]">·</span>
+          <span className="w-px h-3 bg-[#252220] shrink-0" aria-hidden />
           <a
             href="https://x.com/gsymmy"
             target="_blank"
             rel="noreferrer"
-            className="link-hover hover:text-white"
+            className="link-hover hover:text-[#EDE7DC] inline-flex items-center gap-[3px]"
           >
-            X
+            X<span className="nav-arrow">↗</span>
           </a>
-          <span className="text-[#4a4b4e]">·</span>
-          <a href="mailto:gsymmy@gmail.com" className="link-hover hover:text-white">
+          <span className="w-px h-3 bg-[#252220] shrink-0" aria-hidden />
+          <a href="mailto:gsymmy@gmail.com" className="link-hover hover:text-[#EDE7DC]">
             Email
           </a>
         </nav>
 
         {/* Footer */}
-        <footer className="mt-16 flex items-center justify-between text-xs text-[#656157]">
-          <span>© {new Date().getFullYear()}</span>
-          <span className="font-mono tracking-[0.25em] text-[#565047] hover:text-[#bca581] transition-colors duration-200 cursor-default">GS</span>
+        <footer className="page-child mt-14 flex items-center justify-between">
+          <span className="text-[#3A3830] font-mono text-[10px] tracking-[0.12em]">
+            © {new Date().getFullYear()}
+          </span>
+          <span
+            className="hover:text-[#C8922A] transition-colors duration-300 cursor-default select-none text-[#4A4640]"
+            style={{ fontSize: "14px", letterSpacing: "0.2em", fontWeight: 500 }}
+          >
+            GS
+          </span>
         </footer>
+
       </div>
 
       {/* Easter egg banner */}

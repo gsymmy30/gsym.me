@@ -459,8 +459,8 @@ export function render(
       mouse.smoothY,
       config.lensRadius,
     );
-    g.addColorStop(0, `rgba(99,102,241,${0.04 * mouse.influence})`);
-    g.addColorStop(0.6, `rgba(99,102,241,${0.015 * mouse.influence})`);
+    g.addColorStop(0, `rgba(200,146,42,${0.05 * mouse.influence})`);
+    g.addColorStop(0.6, `rgba(200,146,42,${0.018 * mouse.influence})`);
     g.addColorStop(1, "rgba(0,0,0,0)");
     ctx.fillStyle = g;
     ctx.fillRect(
