@@ -139,7 +139,7 @@ export default function Page() {
               </a>
               , built a lot at{" "}
               <a
-                href="https://devpost.com/gursimransingh"
+                href="https://devpost.com/gsymmy"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-ref"
