@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Page() {
   // Easter egg: type "gdawg" to show the banner
@@ -236,13 +235,6 @@ export default function Page() {
           <a href="mailto:gsymmy@gmail.com" className="link-hover hover:text-[#E0DCD5]">
             Email
           </a>
-          <span className="w-px h-3 bg-[#22232A] shrink-0" aria-hidden />
-          <Link
-            href="/press"
-            className="link-hover hover:text-[#E0DCD5] inline-flex items-center gap-[3px]"
-          >
-            Press<span className="nav-arrow">↗</span>
-          </Link>
         </nav>
 
 

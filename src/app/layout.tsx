@@ -2,6 +2,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, JetBrains_Mono, Lora } from "next/font/google";
 import GridBackground from "@/components/GridBackground";
+import PressNavLink from "@/components/PressNavLink";
+import TransitionLink from "@/components/TransitionLink";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://gsym.me"),
   applicationName: "Gursimran Singh",
   title: {
-    default: "Gursimran Singh — TPM at Google DeepMind",
+    default: "Gursimran Singh",
     template: "%s — Gursimran Singh",
   },
   description:
@@ -73,7 +75,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Gursimran Singh — TPM at Google DeepMind",
+    title: "Gursimran Singh",
     description:
       "Gursimran Singh is a Technical Program Manager at Google DeepMind in San Francisco. Previously Product Manager at Microsoft Azure. Georgia Tech CS + Design graduate.",
     url: "https://gsym.me",
@@ -91,7 +93,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gursimran Singh — TPM at Google DeepMind",
+    title: "Gursimran Singh",
     description:
       "Technical Program Manager at Google DeepMind. Previously Product at Microsoft Azure. Georgia Tech CS + Design.",
     images: ["/og.png"],
@@ -199,10 +201,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Four corner anchors — fixed frame */}
         <div className="fixed top-0 left-0 p-6 sm:p-8 corner-anchor" style={{ zIndex: 150 }}>
-          <a href="/" className="corner-brand">gsym.me</a>
+          <TransitionLink href="/" className="corner-brand">gsym.me</TransitionLink>
         </div>
         <div className="fixed top-0 right-0 p-6 sm:p-8 corner-anchor" style={{ zIndex: 150, animationDelay: "0.06s" }}>
-          <a href="/press" className="corner-nav-link">Press ↗</a>
+          <PressNavLink />
         </div>
         <div className="fixed bottom-0 left-0 p-6 sm:p-8 corner-anchor" style={{ zIndex: 150, animationDelay: "0.1s" }}>
           <span className="corner-coord">

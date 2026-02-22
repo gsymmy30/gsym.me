@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
-
+import CornerBackLink from "@/components/CornerBackLink";
 export const metadata: Metadata = {
   title: "Press",
   description:
@@ -118,6 +117,7 @@ export default function PressPage() {
 
   return (
     <main className="min-h-screen px-6 sm:px-8 pt-20 pb-20 md:pt-24 md:pb-24">
+      <CornerBackLink />
       <div className="mx-auto max-w-[580px] content-area">
         <script
           type="application/ld+json"
@@ -127,21 +127,6 @@ export default function PressPage() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
-
-        {/* Back */}
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 transition-colors duration-200"
-          style={{
-            fontFamily: "var(--font-mono, 'JetBrains Mono', monospace)",
-            fontSize: "10px",
-            letterSpacing: "0.16em",
-            color: "#484642",
-          }}
-        >
-          <span style={{ color: "#6BABA0" }}>←</span>
-          <span className="hover:text-[#6BABA0] transition-colors duration-200">INDEX</span>
-        </Link>
 
         {/* Heading */}
         <h1
@@ -156,28 +141,7 @@ export default function PressPage() {
           Press
         </h1>
 
-        {/* Section label */}
-        <div className="mt-2 mb-10 flex items-center gap-3">
-          <span
-            style={{
-              fontFamily: "var(--font-mono, 'JetBrains Mono', monospace)",
-              fontSize: "7.5px",
-              letterSpacing: "0.26em",
-              textTransform: "uppercase",
-              color: "#484642",
-            }}
-          >
-            {items.length} mentions
-          </span>
-          <span
-            style={{
-              display: "block",
-              width: "36px",
-              height: "1px",
-              background: "linear-gradient(90deg, rgba(107,171,160,0.35), transparent)",
-            }}
-          />
-        </div>
+        <div className="mt-2 mb-10" />
 
         {/* Press list */}
         <ul className="space-y-1">
@@ -196,22 +160,6 @@ export default function PressPage() {
           ))}
         </ul>
 
-        {/* Footer */}
-        <div className="mt-14 pt-8 border-t border-[#1C1D22]">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 transition-colors duration-200"
-            style={{
-              fontFamily: "var(--font-mono, 'JetBrains Mono', monospace)",
-              fontSize: "10px",
-              letterSpacing: "0.16em",
-              color: "#484642",
-            }}
-          >
-            <span style={{ color: "#6BABA0" }}>←</span>
-            <span className="hover:text-[#6BABA0] transition-colors duration-200">Back to index</span>
-          </Link>
-        </div>
       </div>
     </main>
   );
