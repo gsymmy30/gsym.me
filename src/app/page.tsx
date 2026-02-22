@@ -87,7 +87,7 @@ export default function Page() {
                 <a
                   href="https://deepmind.google/"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="hover:text-[#6BABA0] transition-colors duration-200"
                 >
                   Google DeepMind
@@ -110,7 +110,7 @@ export default function Page() {
               <div className="absolute -inset-[1px] border border-[#6BABA0]/16 rounded-xl" />
               <Image
                 src="/headshot.jpg"
-                alt="Gursimran Singh"
+                alt="Gursimran Singh, Technical Program Manager at Google DeepMind"
                 width={152}
                 height={152}
                 priority
@@ -137,7 +137,7 @@ export default function Page() {
               <a
                 href="https://www.youtube.com/watch?v=0-CumFHE8eo"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-ref"
               >
                 scooter-safety startup
@@ -146,7 +146,7 @@ export default function Page() {
               <a
                 href="https://devpost.com/gsymmy"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-ref"
               >
                 HackGT
@@ -170,7 +170,7 @@ export default function Page() {
               <a
                 href="https://nypost.com/2019/10/31/college-student-lands-fortune-500-gig-by-writing-hire-me-with-sticky-notes/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-ref"
               >
                 the New York Post
@@ -183,7 +183,7 @@ export default function Page() {
               <a
                 href="https://yourstory.com/2017/06/gursimran-singh"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-ref"
               >
                 award from Michael Phelps
@@ -209,7 +209,7 @@ export default function Page() {
           <a
             href="https://www.linkedin.com/in/pingthesingh/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="link-hover hover:text-[#E0DCD5] inline-flex items-center gap-[3px]"
           >
             LinkedIn<span className="nav-arrow">↗</span>
@@ -218,7 +218,7 @@ export default function Page() {
           <a
             href="https://github.com/gsymmy30"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="link-hover hover:text-[#E0DCD5] inline-flex items-center gap-[3px]"
           >
             GitHub<span className="nav-arrow">↗</span>
@@ -227,7 +227,7 @@ export default function Page() {
           <a
             href="https://x.com/gsymmy"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="link-hover hover:text-[#E0DCD5] inline-flex items-center gap-[3px]"
           >
             X<span className="nav-arrow">↗</span>

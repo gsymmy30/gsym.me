@@ -88,6 +88,15 @@ export default function PressPage() {
     },
   ];
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://gsym.me" },
+      { "@type": "ListItem", position: 2, name: "Press", item: "https://gsym.me/press" },
+    ],
+  };
+
   const pressJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -113,6 +122,10 @@ export default function PressPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(pressJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
 
         {/* Back */}
@@ -173,7 +186,7 @@ export default function PressPage() {
               <a
                 href={item.url}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="press-item"
               >
                 <span className="press-outlet">{item.outlet}</span>

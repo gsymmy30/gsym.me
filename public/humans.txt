@@ -1,0 +1,10 @@
+/* TEAM */
+Gursimran Singh — Technical Program Manager
+Site: https://gsym.me
+Twitter: @gsymmy
+
+/* SITE */
+Last update: 2026-02-21
+Language: English
+Standards: HTML5, CSS3
+Components: Next.js, React, Tailwind CSS

@@ -3,19 +3,18 @@ import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://gsym.me";
-  const now = new Date();
 
   return [
     {
       url: baseUrl,
-      lastModified: now,
+      lastModified: new Date("2026-02-21"),
       changeFrequency: "monthly",
       priority: 1.0,
     },
     {
       url: `${baseUrl}/press`,
-      lastModified: now,
-      changeFrequency: "monthly",
+      lastModified: new Date("2026-02-21"),
+      changeFrequency: "yearly",
       priority: 0.7,
     },
   ];

@@ -31,11 +31,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://gsym.me"),
   applicationName: "Gursimran Singh",
   title: {
-    default: "Gursimran Singh",
-    template: "%s | Gursimran Singh",
+    default: "Gursimran Singh — TPM at Google DeepMind",
+    template: "%s — Gursimran Singh",
   },
   description:
-    "Gursimran Singh is a Technical Program Manager at Google DeepMind in San Francisco. Previously Product Manager at Microsoft Azure. Georgia Tech CS + Design graduate.",
+    "Gursimran Singh is a Technical Program Manager at Google DeepMind. Previously PM at Microsoft Azure. Georgia Tech CS + Design.",
   keywords: [
     "Gursimran Singh",
     "Gursimran",
@@ -124,6 +124,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     name: "Gursimran Singh",
     givenName: "Gursimran",
     familyName: "Singh",
+    description: "Technical Program Manager at Google DeepMind. Previously Product Manager at Microsoft Azure. Georgia Tech CS + Design graduate.",
     url: "https://gsym.me",
     image: "https://gsym.me/headshot.jpg",
     jobTitle: "Technical Program Manager",
@@ -154,6 +155,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     name: "Gursimran Singh",
     description: "Personal website of Gursimran Singh, Technical Program Manager at Google DeepMind",
     publisher: { "@id": "https://gsym.me/#person" },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://gsym.me/?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
   };
 
   const profilePageJsonLd = {
@@ -204,7 +210,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <a
               href="https://maps.google.com/?q=Seattle,WA"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="corner-coord-link"
             >
               47.61°N 122.33°W
