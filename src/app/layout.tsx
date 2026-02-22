@@ -1,8 +1,31 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
+import { Cormorant_Garamond, JetBrains_Mono, Lora } from "next/font/google";
 import GridBackground from "@/components/GridBackground";
 import "./globals.css";
 
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+const lora = Lora({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gsym.me"),
@@ -147,10 +170,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
-        className="antialiased"
+        className={`${cormorant.variable} ${jetbrainsMono.variable} ${lora.variable} antialiased`}
         suppressHydrationWarning
       >
-
         {/* Structured data for rich results */}
         <script
           type="application/ld+json"
@@ -168,6 +190,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }}
         />
         <GridBackground />
+
+        {/* Four corner anchors — fixed frame */}
+        <div className="fixed top-0 left-0 p-6 sm:p-8 corner-anchor" style={{ zIndex: 150 }}>
+          <a href="/" className="corner-brand">gsym.me</a>
+        </div>
+        <div className="fixed top-0 right-0 p-6 sm:p-8 corner-anchor" style={{ zIndex: 150, animationDelay: "0.06s" }}>
+          <a href="/press" className="corner-nav-link">Press ↗</a>
+        </div>
+        <div className="fixed bottom-0 left-0 p-6 sm:p-8 corner-anchor" style={{ zIndex: 150, animationDelay: "0.1s" }}>
+          <span className="corner-coord">
+            © {new Date().getFullYear()} ·{" "}
+            <a
+              href="https://maps.google.com/?q=Seattle,WA"
+              target="_blank"
+              rel="noreferrer"
+              className="corner-coord-link"
+            >
+              47.61°N 122.33°W
+            </a>
+          </span>
+        </div>
+        <div className="fixed bottom-0 right-0 p-6 sm:p-8 corner-anchor" style={{ zIndex: 150, animationDelay: "0.14s" }}>
+          <span className="corner-monogram">GS</span>
+        </div>
+
         <div className="relative z-10">
           {children}
         </div>

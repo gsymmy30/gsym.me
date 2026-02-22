@@ -408,7 +408,7 @@ export function render(
     const baseAlpha = a.useAccent ? 0.1 : 0.06;
     const alpha = baseAlpha * lifeAlpha;
     const color = a.useAccent
-      ? `rgba(99,102,241,${alpha})`
+      ? `rgba(107,171,160,${alpha})`
       : `rgba(255,255,255,${alpha})`;
 
     ctx.strokeStyle = color;
@@ -459,8 +459,8 @@ export function render(
       mouse.smoothY,
       config.lensRadius,
     );
-    g.addColorStop(0, `rgba(200,146,42,${0.05 * mouse.influence})`);
-    g.addColorStop(0.6, `rgba(200,146,42,${0.018 * mouse.influence})`);
+    g.addColorStop(0, `rgba(107,171,160,${0.05 * mouse.influence})`);
+    g.addColorStop(0.6, `rgba(107,171,160,${0.018 * mouse.influence})`);
     g.addColorStop(1, "rgba(0,0,0,0)");
     ctx.fillStyle = g;
     ctx.fillRect(

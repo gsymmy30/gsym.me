@@ -1,18 +1,25 @@
 @import "tailwindcss";
 
+/* ── Design tokens ───────────────────────────────────────────── */
 :root {
-  --bg: #0a0b0c;
-  --text: #EDE7DC;
-  --text-dim: #BEB6AB;
-  --muted: #7A7268;
-  --border: #201F1D;
-  --accent: #C8922A;
-  --accent-light: #E8B85A;
-  --accent-dim: #7A5A18;
+  --bg: #07080B;
+  --surface: #0E0F14;
+  --text: #E0DCD5;
+  --text-dim: #8A8680;
+  --muted: #484642;
+  --border: #1C1D22;
+  --accent: #6BABA0;        /* verdigris — patina on copper */
+  --accent-light: #8FCEC5;
+  --accent-dim: #2A514D;
+  --warm: #BE7D5A;          /* sienna */
+
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', 'Menlo', 'Courier New', monospace;
 }
 
 html {
-  font-feature-settings: "kern" 1, "liga" 1;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "onum" 1;
   scroll-behavior: smooth;
 }
 
@@ -20,11 +27,11 @@ body {
   background: var(--bg);
   min-height: 100vh;
   color: var(--text);
-  font-family: "Inter", "Inter Tight", "Manrope", "SF Pro Text", "Avenir Next", "Segoe UI", sans-serif;
+  font-family: var(--font-body), Georgia, serif;
   background-image:
-    radial-gradient(ellipse 90% 60% at 50% -14%, rgba(200, 146, 42, 0.09), transparent 62%),
-    radial-gradient(ellipse 55% 45% at 95% 4%, rgba(80, 110, 140, 0.05), transparent 70%),
-    radial-gradient(ellipse 75% 55% at 0% 100%, rgba(0, 0, 0, 0.45), transparent 60%);
+    radial-gradient(ellipse 85% 55% at 50% -8%, rgba(107, 171, 160, 0.065), transparent 62%),
+    radial-gradient(ellipse 45% 38% at 92% 6%, rgba(190, 125, 90, 0.035), transparent 68%),
+    radial-gradient(ellipse 70% 55% at 0% 100%, rgba(0, 0, 0, 0.45), transparent 60%);
 }
 
 /* ── Film grain overlay ──────────────────────────────────────── */
@@ -34,20 +41,78 @@ body::before {
   inset: 0;
   z-index: 100;
   pointer-events: none;
-  opacity: 0.038;
+  opacity: 0.032;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 300px 300px;
 }
 
 ::selection {
   background: var(--accent-dim);
-  color: #FDF8F2;
+  color: #F0EDEA;
 }
 
 :focus-visible {
   outline: 1px solid var(--accent);
   outline-offset: 3px;
 }
+
+/* ── Corner anchors — fixed four-point frame ─────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.corner-anchor {
+  animation: fadeIn 1s ease both;
+}
+
+.corner-brand {
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  text-decoration: none;
+  user-select: none;
+  transition: color 0.22s ease;
+}
+.corner-brand:hover { color: var(--text-dim); }
+
+.corner-nav-link {
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.22s ease;
+}
+.corner-nav-link:hover { color: var(--accent); }
+
+.corner-coord {
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: #2A2C32;
+}
+
+.corner-coord-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.corner-coord-link:hover { color: var(--accent); }
+
+.corner-monogram {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  font-weight: 400;
+  color: #38393F;
+  cursor: default;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+.corner-monogram:hover { color: var(--accent); }
 
 /* ── Animated underline links ───────────────────────────────── */
 .link-hover {
@@ -81,55 +146,61 @@ body::before {
 }
 
 .link-hover:hover .nav-arrow {
-  opacity: 0.4;
+  opacity: 0.45;
   transform: translate(1px, -1px);
 }
 
-/* ── Section label ───────────────────────────────────────────── */
+/* ── Section label — full-width rule treatment ───────────────── */
 .section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 11px;
-  font-family: "Inter", "Inter Tight", "Manrope", "SF Pro Text", "Segoe UI", sans-serif;
+  display: block;
+  position: relative;
+  padding-top: 22px;
+  font-family: var(--font-mono), monospace;
   font-size: 8.5px;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--text-dim);
 }
 
-@keyframes labelLine {
-  from { width: 0; opacity: 0; }
-  to   { width: 52px; opacity: 1; }
+@keyframes ruleIn {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 
-.section-label::after {
+.section-label::before {
   content: "";
-  display: block;
-  width: 52px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 1px;
-  background: linear-gradient(90deg, rgba(200, 146, 42, 0.55), transparent);
-  animation: labelLine 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  background: linear-gradient(90deg, var(--border) 0%, rgba(28, 29, 34, 0.18) 100%);
+  transform-origin: left;
+  animation: ruleIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.page-child:nth-child(2) .section-label::after { animation-delay: 0.44s; }
-.page-child:nth-child(3) .section-label::after { animation-delay: 0.56s; }
+.page-child:nth-child(2) .section-label::before { animation-delay: 0.35s; }
+.page-child:nth-child(3) .section-label::before { animation-delay: 0.46s; }
 
 .section-num {
-  color: var(--accent-dim);
-  opacity: 0.7;
-  font-size: 8px;
+  position: absolute;
+  top: 4px;
+  right: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 7px;
+  color: var(--accent);
+  opacity: 0.55;
   letter-spacing: 0.1em;
-  margin-right: -2px;
 }
 
 /* ── Display name ────────────────────────────────────────────── */
 .display-name {
-  font-family: "Inter Tight", "Inter", "Manrope", "SF Pro Display", "Avenir Next", "Segoe UI", sans-serif;
-  font-weight: 600;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 300;
   font-style: normal;
-  letter-spacing: -0.03em;
-  line-height: 0.88;
+  letter-spacing: -0.01em;
+  line-height: 0.93;
 }
 
 /* ── Name ambient glow ───────────────────────────────────────── */
@@ -143,26 +214,27 @@ body::before {
   top: 45%;
   left: 32%;
   transform: translate(-50%, -50%);
-  width: 340px;
-  height: 170px;
-  background: radial-gradient(ellipse, rgba(200, 146, 42, 0.075) 0%, transparent 70%);
-  filter: blur(52px);
+  width: 360px;
+  height: 180px;
+  background: radial-gradient(ellipse, rgba(107, 171, 160, 0.055) 0%, transparent 70%);
+  filter: blur(56px);
   pointer-events: none;
   z-index: -1;
 }
 
 /* ── Eyebrow / meta ──────────────────────────────────────────── */
 .meta-eyebrow {
-  font-family: "Inter", "Inter Tight", "Manrope", "SF Pro Text", "Segoe UI", sans-serif;
-  letter-spacing: 0.14em;
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  font-size: 0.62rem;
-  font-weight: 500;
+  font-size: 8px;
+  font-weight: 400;
   color: var(--accent);
 }
 
 /* ── Body copy ───────────────────────────────────────────────── */
 .body-copy {
+  font-family: var(--font-body), Georgia, serif;
   color: var(--text-dim);
 }
 
@@ -170,7 +242,7 @@ body::before {
 .inline-ref {
   color: var(--text);
   text-decoration: underline;
-  text-decoration-color: rgba(200, 146, 42, 0.28);
+  text-decoration-color: rgba(107, 171, 160, 0.22);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   transition: color 0.2s ease, text-decoration-color 0.2s ease;
@@ -181,21 +253,34 @@ body::before {
   text-decoration-color: var(--accent);
 }
 
+/* ── Fig caption ─────────────────────────────────────────────── */
+.fig-caption {
+  font-family: var(--font-mono), monospace;
+  font-size: 7px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 7px;
+  opacity: 0.45;
+}
+
 /* ── Staggered page entrance ─────────────────────────────────── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 .page-child {
-  animation: fadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.page-child:nth-child(1) { animation-delay: 0.05s; }
-.page-child:nth-child(2) { animation-delay: 0.18s; }
-.page-child:nth-child(3) { animation-delay: 0.30s; }
-.page-child:nth-child(4) { animation-delay: 0.40s; }
-.page-child:nth-child(5) { animation-delay: 0.48s; }
+.page-child:nth-child(1) { animation-delay: 0.08s; }
+.page-child:nth-child(2) { animation-delay: 0.20s; }
+.page-child:nth-child(3) { animation-delay: 0.31s; }
+.page-child:nth-child(4) { animation-delay: 0.41s; }
+.page-child:nth-child(5) { animation-delay: 0.49s; }
+.page-child:nth-child(6) { animation-delay: 0.54s; }
 
 /* ── Heading rendering ───────────────────────────────────────── */
 h1, h2, h3 {
@@ -205,5 +290,42 @@ h1, h2, h3 {
 
 /* ── Glow utility ────────────────────────────────────────────── */
 .glow {
-  box-shadow: 0 0 60px -18px rgba(200, 146, 42, 0.18);
+  box-shadow: 0 0 60px -18px rgba(107, 171, 160, 0.14);
+}
+
+
+
+/* ── Press page items ────────────────────────────────────────── */
+.press-item {
+  display: block;
+  padding: 10px 12px;
+  margin: 0 -12px;
+  border-radius: 6px;
+  transition: background 0.22s ease;
+}
+
+.press-item:hover {
+  background: rgba(107, 171, 160, 0.04);
+}
+
+.press-outlet {
+  font-family: var(--font-mono), monospace;
+  font-size: 7.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.press-title {
+  font-family: var(--font-body), Georgia, serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-dim);
+  margin-top: 3px;
+  transition: color 0.2s ease;
+}
+
+.press-item:hover .press-title {
+  color: var(--text);
 }

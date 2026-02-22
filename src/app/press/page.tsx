@@ -108,38 +108,97 @@ export default function PressPage() {
   };
 
   return (
-    <main className="min-h-screen px-6 sm:px-8 py-20 md:py-32">
-      <div className="mx-auto max-w-[540px]">
+    <main className="min-h-screen px-6 sm:px-8 pt-20 pb-20 md:pt-24 md:pb-24">
+      <div className="mx-auto max-w-[580px] content-area">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(pressJsonLd) }}
         />
+
+        {/* Back */}
         <Link
           href="/"
-          className="inline-flex items-center gap-1 text-sm text-[#525252] hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 transition-colors duration-200"
+          style={{
+            fontFamily: "var(--font-mono, 'JetBrains Mono', monospace)",
+            fontSize: "10px",
+            letterSpacing: "0.16em",
+            color: "#484642",
+          }}
         >
-          <span>←</span> Back
+          <span style={{ color: "#6BABA0" }}>←</span>
+          <span className="hover:text-[#6BABA0] transition-colors duration-200">INDEX</span>
         </Link>
 
-        <h1 className="mt-8 text-4xl md:text-5xl font-bold tracking-[-0.04em] bg-gradient-to-r from-white to-[#a3a3a3] bg-clip-text text-transparent">Press</h1>
+        {/* Heading */}
+        <h1
+          className="mt-10 leading-none text-[#E4E0D8]"
+          style={{
+            fontFamily: "var(--font-display, 'Cormorant Garamond', Georgia, serif)",
+            fontWeight: 300,
+            fontSize: "clamp(52px, 8vw, 76px)",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Press
+        </h1>
 
-        <ul className="mt-10 space-y-4 text-[15px]">
+        {/* Section label */}
+        <div className="mt-2 mb-10 flex items-center gap-3">
+          <span
+            style={{
+              fontFamily: "var(--font-mono, 'JetBrains Mono', monospace)",
+              fontSize: "7.5px",
+              letterSpacing: "0.26em",
+              textTransform: "uppercase",
+              color: "#484642",
+            }}
+          >
+            {items.length} mentions
+          </span>
+          <span
+            style={{
+              display: "block",
+              width: "36px",
+              height: "1px",
+              background: "linear-gradient(90deg, rgba(107,171,160,0.35), transparent)",
+            }}
+          />
+        </div>
+
+        {/* Press list */}
+        <ul className="space-y-1">
           {items.map((item) => (
             <li key={item.url}>
               <a
                 href={item.url}
                 target="_blank"
                 rel="noreferrer"
-                className="group block p-3 -mx-3 rounded-lg transition-colors hover:bg-[#171717]"
+                className="press-item"
               >
-                <span className="text-[#525252] text-sm">{item.outlet}</span>
-                <span className="block mt-0.5 text-[#a3a3a3] group-hover:text-white">
-                  {item.title}
-                </span>
+                <span className="press-outlet">{item.outlet}</span>
+                <span className="press-title block">{item.title}</span>
               </a>
             </li>
           ))}
         </ul>
+
+        {/* Footer */}
+        <div className="mt-14 pt-8 border-t border-[#1C1D22]">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 transition-colors duration-200"
+            style={{
+              fontFamily: "var(--font-mono, 'JetBrains Mono', monospace)",
+              fontSize: "10px",
+              letterSpacing: "0.16em",
+              color: "#484642",
+            }}
+          >
+            <span style={{ color: "#6BABA0" }}>←</span>
+            <span className="hover:text-[#6BABA0] transition-colors duration-200">Back to index</span>
+          </Link>
+        </div>
       </div>
     </main>
   );
