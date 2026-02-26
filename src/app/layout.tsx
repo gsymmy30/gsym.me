@@ -1,9 +1,12 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
-import { Cormorant_Garamond, JetBrains_Mono, Lora } from "next/font/google";
-import GridBackground from "@/components/GridBackground";
-import PressNavLink from "@/components/PressNavLink";
-import TransitionLink from "@/components/TransitionLink";
+import {
+  Cormorant_Garamond,
+  Geist_Mono,
+  Syne,
+  Barlow_Condensed,
+  Plus_Jakarta_Sans,
+} from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -14,18 +17,31 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
-  variable: "--font-mono",
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
-const lora = Lora({
+const syne = Syne({
   subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-body",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["700", "800", "900"],
+  variable: "--font-barlow",
+  display: "swap",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-jakarta",
   display: "swap",
 });
 
@@ -111,14 +127,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    // Add these after setting up Google Search Console
-    // google: "your-google-verification-code",
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // JSON-LD structured data (Person)
   const personJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -148,7 +159,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     ],
   };
 
-  // WebSite schema for sitelinks search box
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -177,11 +187,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&display=swap" rel="stylesheet" />
+      </head>
       <body
-        className={`${cormorant.variable} ${jetbrainsMono.variable} ${lora.variable} antialiased`}
+        className={`${cormorant.variable} ${geistMono.variable} ${syne.variable} ${barlowCondensed.variable} ${plusJakartaSans.variable} antialiased`}
         suppressHydrationWarning
       >
-        {/* Structured data for rich results */}
         <script
           type="application/ld+json"
           suppressHydrationWarning
@@ -197,35 +211,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }}
         />
-        <GridBackground />
-
-        {/* Four corner anchors — fixed frame */}
-        <div className="fixed top-0 left-0 p-6 sm:p-8 corner-anchor" style={{ zIndex: 150 }}>
-          <TransitionLink href="/" className="corner-brand">gsym.me</TransitionLink>
-        </div>
-        <div className="fixed top-0 right-0 p-6 sm:p-8 corner-anchor" style={{ zIndex: 150, animationDelay: "0.06s" }}>
-          <PressNavLink />
-        </div>
-        <div className="fixed bottom-0 left-0 p-6 sm:p-8 corner-anchor" style={{ zIndex: 150, animationDelay: "0.1s" }}>
-          <span className="corner-coord">
-            © {new Date().getFullYear()} ·{" "}
-            <a
-              href="https://maps.google.com/?q=Seattle,WA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="corner-coord-link"
-            >
-              47.61°N 122.33°W
-            </a>
-          </span>
-        </div>
-        <div className="fixed bottom-0 right-0 p-6 sm:p-8 corner-anchor" style={{ zIndex: 150, animationDelay: "0.14s" }}>
-          <span className="corner-monogram">GS</span>
-        </div>
-
-        <div className="relative z-10">
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );
