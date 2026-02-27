@@ -4,6 +4,7 @@ import Headshot from '@/components/ui/Headshot';
 import NamePill from '@/components/ui/NamePill';
 import RolePill from '@/components/ui/RolePill';
 import AboutPill from '@/components/ui/AboutPill';
+import GlobePill from '@/components/ui/GlobePill';
 import SelectionBox from '@/components/ui/SelectionBox';
 import { PillSelectionProvider } from '@/contexts/PillSelection';
 
@@ -30,6 +31,7 @@ export default function Home() {
         <NamePill />
         <RolePill />
         <AboutPill />
+        <GlobePill />
       </PillSelectionProvider>
     </div>
   );
