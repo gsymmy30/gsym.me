@@ -5,8 +5,12 @@ import { useSelectableDraggable } from '@/hooks/useSelectableDraggable';
 import { usePillSelection } from '@/contexts/PillSelection';
 
 const CSS_SIZE = 200;
+const COAST_URL = '/data/ne_110m_coastline.json';
 
-function renderGlobe(canvas: HTMLCanvasElement, rotX: number, rotY: number) {
+type LonLat = [number, number];
+type Coastlines = LonLat[][];
+
+function renderGlobe(canvas: HTMLCanvasElement, rotX: number, rotY: number, coast: Coastlines | null) {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
@@ -45,6 +49,83 @@ function renderGlobe(canvas: HTMLCanvasElement, rotX: number, rotY: number) {
   // Rotation matrices
   const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
   const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+
+  // Metallic green continents (rough Earth-like mask + low-res bitmap)
+  function wrapLon(a: number, b: number) {
+    let d = a - b;
+    while (d > 180) d -= 360;
+    while (d < -180) d += 360;
+    return d;
+  }
+  function bump(lat: number, lon: number, clat: number, clon: number, rx: number, ry: number, amp: number) {
+    const dx = wrapLon(lon, clon) / rx;
+    const dy = (lat - clat) / ry;
+    return amp * Math.exp(-(dx * dx + dy * dy));
+  }
+  function landMask(lat: number, lon: number) {
+    let v = 0;
+    // North America
+    v += bump(lat, lon, 50, -110, 32, 18, 1.1);
+    v += bump(lat, lon, 40, -95, 28, 16, 0.9);
+    v += bump(lat, lon, 25, -100, 20, 12, 0.6);
+    v += bump(lat, lon, 15, -85, 12, 10, 0.5);
+    // South America
+    v += bump(lat, lon, -15, -60, 16, 22, 0.9);
+    v += bump(lat, lon, -35, -65, 12, 14, 0.7);
+    // Greenland
+    v += bump(lat, lon, 72, -40, 10, 6, 0.6);
+    // Europe
+    v += bump(lat, lon, 54, 12, 18, 10, 0.7);
+    v += bump(lat, lon, 45, 25, 14, 10, 0.6);
+    // Africa
+    v += bump(lat, lon, 5, 20, 20, 26, 1.0);
+    v += bump(lat, lon, -20, 25, 18, 18, 0.8);
+    // Middle East + India
+    v += bump(lat, lon, 25, 45, 14, 10, 0.7);
+    v += bump(lat, lon, 15, 75, 12, 12, 0.7);
+    // Asia
+    v += bump(lat, lon, 55, 90, 28, 16, 0.9);
+    v += bump(lat, lon, 45, 120, 26, 14, 0.9);
+    v += bump(lat, lon, 30, 110, 20, 12, 0.8);
+    v += bump(lat, lon, 10, 105, 16, 10, 0.6);
+    // Japan / SE Asia islands
+    v += bump(lat, lon, 35, 138, 6, 6, 0.5);
+    v += bump(lat, lon, 0, 120, 10, 8, 0.5);
+    // Australia
+    v += bump(lat, lon, -25, 135, 16, 12, 0.9);
+    // Antarctica (subtle)
+    v += bump(lat, lon, -78, 0, 80, 6, 0.7);
+    return v;
+  }
+  const MAP_W = 36;
+  const MAP_H = 18;
+  const MAP = [
+    '............................####',
+    '...........####...........######',
+    '..........######..........######',
+    '....###########...........######',
+    '..##############..........######',
+    '..###############.........#####.',
+    '..###############..####...####..',
+    '..##############..######..####..',
+    '....###########...######..####..',
+    '.....#########....######..####..',
+    '......######......####....####..',
+    '......#####........##.....####..',
+    '......#####...............####..',
+    '......#####...............####..',
+    '......#####...............####..',
+    '......#####...............####..',
+    '....................######.####.',
+    '....................######.####.',
+  ];
+  function bitmapMask(lat: number, lon: number) {
+    const x = Math.floor(((lon + 180) / 360) * MAP_W);
+    const y = Math.floor(((90 - lat) / 180) * MAP_H);
+    const row = MAP[Math.max(0, Math.min(MAP_H - 1, y))];
+    const col = Math.max(0, Math.min(MAP_W - 1, x));
+    return row[col] === '#' ? 1 : 0;
+  }
 
   function project(lat: number, lon: number): [number, number, number] {
     const lr = (lat * Math.PI) / 180;
@@ -110,6 +191,57 @@ function renderGlobe(canvas: HTMLCanvasElement, rotX: number, rotY: number) {
   ctx.lineWidth = 1.1 * dpr;
   ctx.stroke();
 
+  const hasCoast = !!(coast && coast.length);
+  if (!hasCoast) {
+    // Continents layer (front-facing points) as fallback
+    ctx.fillStyle = 'rgba(107,171,160,0.9)';
+    for (let lat = -70; lat <= 70; lat += 2) {
+      for (let lon = -180; lon <= 180; lon += 2) {
+        const lm = landMask(lat, lon);
+        const bm = bitmapMask(lat, lon);
+        if (lm < 0.62 && bm === 0) continue;
+        const [px, py, pz] = project(lat, lon);
+        if (pz < 0) continue;
+        const boost = bm ? 0.25 : 0;
+        const size = (0.7 + Math.max(0, lm - 0.62) * 1.6 + boost) * dpr;
+        ctx.fillRect(px - size * 0.5, py - size * 0.5, size, size);
+      }
+    }
+  }
+
+  if (hasCoast) {
+    // Coastline outlines (front-facing)
+    ctx.save();
+    ctx.strokeStyle = 'rgba(107,171,160,0.7)';
+    ctx.lineWidth = 0.9 * dpr;
+    for (const line of coast!) {
+      let down = false;
+      ctx.beginPath();
+      for (const [lon, lat] of line) {
+        const [px, py, pz] = project(lat, lon);
+        if (pz >= 0) {
+          down ? ctx.lineTo(px, py) : ctx.moveTo(px, py);
+          down = true;
+        } else {
+          down = false;
+        }
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  // Metallic sweep over land only
+  ctx.save();
+  ctx.globalCompositeOperation = 'source-atop';
+  const sweep = ctx.createLinearGradient(cx - r * 0.9, cy - r * 0.3, cx + r * 0.9, cy + r * 0.3);
+  sweep.addColorStop(0, 'rgba(218,215,205,0)');
+  sweep.addColorStop(0.45, 'rgba(218,215,205,0.18)');
+  sweep.addColorStop(0.6, 'rgba(218,215,205,0)');
+  ctx.fillStyle = sweep;
+  ctx.fillRect(0, 0, W, H);
+  ctx.restore();
+
   // Glossy specular highlight
   const hl = ctx.createRadialGradient(cx - r * 0.4, cy - r * 0.45, 0, cx - r * 0.18, cy - r * 0.18, r * 0.7);
   hl.addColorStop(0, 'rgba(218,215,205,0.20)');
@@ -159,6 +291,7 @@ const STYLES = `
 export default function GlobePill() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef  = useRef<HTMLCanvasElement>(null);
+  const coastRef   = useRef<Coastlines | null>(null);
   const { selected } = usePillSelection();
   const isSelected = selected.has('globe');
 
@@ -221,12 +354,40 @@ export default function GlobePill() {
       }
 
       rotXRef.current = Math.max(-1.3, Math.min(1.3, rotXRef.current));
-      if (canvas) renderGlobe(canvas, rotXRef.current, rotYRef.current);
+      if (canvas) renderGlobe(canvas, rotXRef.current, rotYRef.current, coastRef.current);
       rafRef.current = requestAnimationFrame(tick);
     }
 
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  // Load real coastline outlines (GeoJSON) if available
+  useEffect(() => {
+    let cancelled = false;
+    async function loadCoast() {
+      try {
+        const res = await fetch(COAST_URL);
+        if (!res.ok) return;
+        const geo = await res.json();
+        if (cancelled || !geo) return;
+        const lines: Coastlines = [];
+        for (const feature of geo.features || []) {
+          const geom = feature.geometry;
+          if (!geom) continue;
+          if (geom.type === 'LineString') {
+            lines.push(geom.coordinates as LonLat[]);
+          } else if (geom.type === 'MultiLineString') {
+            for (const line of geom.coordinates) lines.push(line as LonLat[]);
+          }
+        }
+        coastRef.current = lines;
+      } catch {
+        // ignore if missing or malformed
+      }
+    }
+    loadCoast();
+    return () => { cancelled = true; };
   }, []);
 
   // Wrap the hook handlers to also spin the globe on drag
