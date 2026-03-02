@@ -105,15 +105,8 @@ const STYLES = `
     opacity: 0.8;
   }
 
-  @media (max-width: 640px) {
-    .gs-role-pill {
-      padding: 14px 20px;
-      gap: 10px;
-    }
-    .gs-role-text,
-    .gs-role-link {
-      font-size: 14px;
-    }
+  @media (max-width: 639px) {
+    .gs-role-wrapper { display: none !important; }
   }
 `;
 

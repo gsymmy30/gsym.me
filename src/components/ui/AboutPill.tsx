@@ -108,10 +108,8 @@ const STYLES = `
     text-decoration-color: rgba(218,215,205,0.7);
   }
 
-  @media (max-width: 640px) {
-    .gs-about-pill {
-      width: calc(100vw - 48px);
-    }
+  @media (max-width: 639px) {
+    .gs-about-wrapper { display: none !important; }
   }
 `;
 

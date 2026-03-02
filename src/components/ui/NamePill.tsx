@@ -66,13 +66,8 @@ const STYLES = `
     white-space: nowrap;
   }
 
-  @media (max-width: 640px) {
-    .gs-name-text {
-      font-size: clamp(32px, 9vw, 72px);
-    }
-    .gs-name-pill {
-      padding: 20px;
-    }
+  @media (max-width: 639px) {
+    .gs-name-wrapper { display: none !important; }
   }
 `;
 

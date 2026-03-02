@@ -1,10 +1,15 @@
 /* TEAM */
-Gursimran Singh — Technical Program Manager
+Gursimran Singh — Technical Program Manager, Google DeepMind
 Site: https://gsym.me
-Twitter: @gsymmy
+Twitter/X: @gsymmy
+LinkedIn: https://www.linkedin.com/in/gsymmy/
+GitHub: https://github.com/gsymmy30
+Location: San Francisco, California, USA
 
 /* SITE */
-Last update: 2026-02-21
+Last update: 2026-03-02
 Language: English
-Standards: HTML5, CSS3
-Components: Next.js, React, Tailwind CSS
+Doctype: HTML5
+Standards: HTML5, CSS3, Schema.org
+Components: Next.js 16, React 19, Tailwind CSS 4
+Hosting: Vercel

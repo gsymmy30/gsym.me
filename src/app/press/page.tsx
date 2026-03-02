@@ -39,51 +39,61 @@ export default function PressPage() {
       outlet: "CNN",
       title: "Georgia Tech student lands internship with sticky note stunt",
       url: "https://www.cnn.com/2019/10/31/us/georgia-tech-student-sticky-note-trnd",
+      datePublished: "2019-10-31",
     },
     {
       outlet: "New York Post",
       title: "College student lands Fortune 500 gig by writing 'Hire Me' with sticky notes",
       url: "https://nypost.com/2019/10/31/college-student-lands-fortune-500-gig-by-writing-hire-me-with-sticky-notes/",
+      datePublished: "2019-10-31",
     },
     {
       outlet: "Entrepreneur",
       title: "How these teenagers are redefining innovation",
       url: "https://www.entrepreneur.com/en-in/entrepreneurs/how-these-teenagers-are-redefining-innovation/319045",
+      datePublished: "2017-01-01",
     },
     {
       outlet: "YourStory",
       title: "Awarded by Michael Phelps for assistive hardware innovation",
       url: "https://yourstory.com/2017/06/gursimran-singh",
+      datePublished: "2017-06-01",
     },
     {
       outlet: "Fox 5 Atlanta",
       title: "Georgia Tech student's low-tech way he got a high-tech internship",
       url: "https://www.fox5atlanta.com/news/georgia-tech-students-low-tech-way-he-got-a-high-tech-internship",
+      datePublished: "2019-10-31",
     },
     {
       outlet: "11Alive",
       title: "Student's sticky note message lands him interview with Fortune 500 company",
       url: "https://www.11alive.com/article/news/local/georgia-tech-students-sticky-note-message-and-smiley-face-lands-him-interview-with-fortune-500-company/85-3ca5550b-6326-4c24-aa2f-48797b4169ad",
+      datePublished: "2019-10-31",
     },
     {
       outlet: "Atlanta Journal-Constitution",
       title: "Georgia Tech student lands internship using sticky notes",
       url: "https://www.ajc.com/lifestyles/hire-tech-student-lands-fortune-500-internship-using-sticky-notes/vxJFwBTPpQiRpMhmDAgY8I/",
+      datePublished: "2019-10-31",
     },
     {
       outlet: "NDTV",
       title: "Meet the innovators working towards creating a Behtar India",
       url: "https://swachhindia.ndtv.com/video-details-page/meet-the-innovators-who-are-working-towards-creating-a-behtar-india-464562/",
+      datePublished: "2017-06-01",
     },
     {
       outlet: "Financial Express",
       title: "India's top student volunteers felicitated at Pramerica Spirit of Community Awards",
       url: "https://www.financialexpress.com/money/indias-top-student-volunteers-felicitated-in-the-7th-annual-pramerica-spirit-of-community-awards-by-dhfl-pramerica-life-insurance-613081/",
+      datePublished: "2017-01-01",
     },
     {
       outlet: "Asian Age",
       title: "Visionary talent spotlight",
       url: "https://www.asianage.com/life/more-features/270417/visionary-talent.html",
+      datePublished: "2017-04-27",
     },
   ];
 
@@ -91,7 +101,7 @@ export default function PressPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://gsym.me" },
+      { "@type": "ListItem", position: 1, name: "Gursimran Singh", item: "https://gsym.me" },
       { "@type": "ListItem", position: 2, name: "Press", item: "https://gsym.me/press" },
     ],
   };
@@ -102,17 +112,51 @@ export default function PressPage() {
     "@id": "https://gsym.me/press#webpage",
     url: "https://gsym.me/press",
     name: "Press | Gursimran Singh",
+    inLanguage: "en-US",
     description:
       "Press mentions featuring Gursimran Singh, including CNN, New York Post, Entrepreneur, YourStory, and more.",
+    about: { "@id": "https://gsym.me/#person" },
+    author: { "@id": "https://gsym.me/#person" },
+    publisher: { "@id": "https://gsym.me/#person" },
+    isPartOf: { "@id": "https://gsym.me/#website" },
+    dateModified: "2026-03-02",
     mainEntity: {
       "@type": "ItemList",
+      name: "Press Mentions — Gursimran Singh",
+      description: "Media coverage and press mentions of Gursimran Singh.",
+      numberOfItems: items.length,
       itemListElement: items.map((item, index) => ({
         "@type": "ListItem",
         position: index + 1,
         url: item.url,
         name: `${item.outlet}: ${item.title}`,
+        item: {
+          "@type": "NewsArticle",
+          headline: item.title,
+          url: item.url,
+          datePublished: item.datePublished,
+          publisher: {
+            "@type": "Organization",
+            name: item.outlet,
+          },
+          about: { "@id": "https://gsym.me/#person" },
+          mentions: { "@id": "https://gsym.me/#person" },
+        },
       })),
     },
+  };
+
+  const personMentionJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://gsym.me/#person",
+    name: "Gursimran Singh",
+    url: "https://gsym.me",
+    sameAs: [
+      "https://www.linkedin.com/in/gsymmy/",
+      "https://github.com/gsymmy30",
+      "https://x.com/gsymmy",
+    ],
   };
 
   return (
@@ -126,6 +170,10 @@ export default function PressPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personMentionJsonLd) }}
         />
 
         {/* Heading */}

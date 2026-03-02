@@ -54,11 +54,8 @@ const STYLES = `
     border-radius: 12px;
   }
 
-  @media (max-width: 640px) {
-    .gs-headshot-pill img {
-      width: 160px;
-      height: 160px;
-    }
+  @media (max-width: 639px) {
+    .gs-headshot-wrapper { display: none !important; }
   }
 `;
 
@@ -102,7 +99,15 @@ export default function Headshot() {
       >
         <div className="gs-headshot-pill" style={{ transform: `scale(${scale})`, transformOrigin: 'top left', ...(isSelected ? { outline: '1.5px solid rgba(218,215,205,0.4)', outlineOffset: '3px' } : {}) }}>
           <MacControls onShrink={shrink} onGrow={grow} onReset={reset} atMin={atMin} atMax={atMax} />
-          <img src="/headshot.jpg" alt="Headshot" draggable={false} />
+          <img
+            src="/headshot.jpg"
+            alt="Gursimran Singh — Technical Program Manager at Google DeepMind"
+            width={240}
+            height={240}
+            draggable={false}
+            fetchPriority="high"
+            loading="eager"
+          />
         </div>
       </div>
     </>
