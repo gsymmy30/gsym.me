@@ -3,6 +3,7 @@
 import { useRef, useEffect, useCallback } from 'react';
 import { useSelectableDraggable } from '@/hooks/useSelectableDraggable';
 import { usePillSelection } from '@/contexts/PillSelection';
+import { useTheme } from '@/contexts/Theme';
 import { renderGlobe, loadCoastlines, type Coastlines } from '@/lib/globe';
 
 const CSS_SIZE = 200;
@@ -39,6 +40,10 @@ export default function GlobePill() {
   const coastRef   = useRef<Coastlines | null>(null);
   const { selected } = usePillSelection();
   const isSelected = selected.has('globe');
+
+  const { theme } = useTheme();
+  const themeRef = useRef(theme);
+  useEffect(() => { themeRef.current = theme; }, [theme]);
 
   const rotXRef = useRef(0.38);
   const rotYRef = useRef(0);
@@ -99,7 +104,8 @@ export default function GlobePill() {
       }
 
       rotXRef.current = Math.max(-1.3, Math.min(1.3, rotXRef.current));
-      if (canvas) renderGlobe(canvas, rotXRef.current, rotYRef.current, coastRef.current, CSS_SIZE);
+      const t = themeRef.current;
+      if (canvas) renderGlobe(canvas, rotXRef.current, rotYRef.current, coastRef.current, CSS_SIZE, t.globeAccentRgb, t.globeBase1, t.globeBase2, t.globeBase3);
       rafRef.current = requestAnimationFrame(tick);
     }
 

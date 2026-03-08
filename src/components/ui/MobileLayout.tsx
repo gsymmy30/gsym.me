@@ -1,21 +1,22 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
+import { useTheme } from '@/contexts/Theme';
 import { renderGlobe, loadCoastlines, type Coastlines } from '@/lib/globe';
 
 const GLOBE_SIZE = 160;
 
 const CARD = `
-  background: rgba(12, 30, 22, 0.82);
+  background: var(--gs-card);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(218,215,205,0.12);
-  border-top-color: rgba(218,215,205,0.24);
+  border: 1px solid rgba(var(--gs-text-rgb),0.12);
+  border-top-color: rgba(var(--gs-text-rgb),0.24);
   box-shadow:
     0 2px 4px rgba(0,0,0,0.15),
     0 8px 24px rgba(0,0,0,0.4),
     0 24px 48px rgba(0,0,0,0.25),
-    inset 0 1px 0 rgba(218,215,205,0.05);
+    inset 0 1px 0 rgba(var(--gs-text-rgb),0.05);
 `;
 
 const STYLES = `
@@ -58,7 +59,7 @@ const STYLES = `
     line-height: 0.9;
     letter-spacing: -0.01em;
     text-transform: uppercase;
-    color: #dad7cd;
+    color: var(--gs-text);
     text-align: center;
   }
 
@@ -108,7 +109,7 @@ const STYLES = `
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.01em;
-    color: rgba(218,215,205,0.65);
+    color: rgba(var(--gs-text-rgb),0.65);
   }
   .gsm-role-company {
     font-family: 'Google Sans', sans-serif;
@@ -118,10 +119,10 @@ const STYLES = `
     text-decoration: none;
     background: linear-gradient(
       90deg,
-      rgba(218,215,205,0.55) 0%,
-      rgba(218,215,205,1) 40%,
-      rgba(218,215,205,1) 60%,
-      rgba(218,215,205,0.55) 100%
+      rgba(var(--gs-text-rgb),0.55) 0%,
+      rgba(var(--gs-text-rgb),1) 40%,
+      rgba(var(--gs-text-rgb),1) 60%,
+      rgba(var(--gs-text-rgb),0.55) 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -145,13 +146,13 @@ const STYLES = `
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(218,215,205,0.5);
+    color: rgba(var(--gs-text-rgb),0.5);
     margin-bottom: 14px;
   }
   .gsm-about-divider {
     width: 100%;
     height: 1px;
-    background: rgba(218,215,205,0.1);
+    background: rgba(var(--gs-text-rgb),0.1);
     margin-bottom: 16px;
   }
   .gsm-about-para {
@@ -159,19 +160,19 @@ const STYLES = `
     font-size: 13.5px;
     font-weight: 400;
     line-height: 1.75;
-    color: rgba(218,215,205,0.78);
+    color: rgba(var(--gs-text-rgb),0.78);
     margin: 0;
   }
   .gsm-about-rule {
     width: 100%;
     height: 1px;
-    background: rgba(218,215,205,0.07);
+    background: rgba(var(--gs-text-rgb),0.07);
     margin: 12px 0;
   }
   .gsm-about-link {
-    color: rgba(218,215,205,0.95);
+    color: rgba(var(--gs-text-rgb),0.95);
     text-decoration: underline;
-    text-decoration-color: rgba(218,215,205,0.25);
+    text-decoration-color: rgba(var(--gs-text-rgb),0.25);
     text-underline-offset: 3px;
   }
 
@@ -189,7 +190,7 @@ const STYLES = `
     font-weight: 500;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: rgba(218,215,205,0.3);
+    color: rgba(var(--gs-text-rgb),0.3);
   }
   .gsm-globe-canvas {
     border-radius: 50%;
@@ -203,6 +204,9 @@ export default function MobileLayout() {
   const rotXRef   = useRef(0.38);
   const rotYRef   = useRef(0);
   const rafRef    = useRef(0);
+  const { theme } = useTheme();
+  const themeRef  = useRef(theme);
+  useEffect(() => { themeRef.current = theme; }, [theme]);
 
   // Animation loop — auto-spin only (no touch drag to avoid scroll conflicts)
   useEffect(() => {
@@ -219,7 +223,8 @@ export default function MobileLayout() {
       const dt = Math.min((now - lastT) / 1000, 0.05);
       lastT = now;
       rotYRef.current += 0.0028 * dt * 60;
-      if (canvas) renderGlobe(canvas, rotXRef.current, rotYRef.current, coastRef.current, GLOBE_SIZE);
+      const t = themeRef.current;
+      if (canvas) renderGlobe(canvas, rotXRef.current, rotYRef.current, coastRef.current, GLOBE_SIZE, t.globeAccentRgb, t.globeBase1, t.globeBase2, t.globeBase3);
       rafRef.current = requestAnimationFrame(tick);
     }
     rafRef.current = requestAnimationFrame(tick);

@@ -1,7 +1,16 @@
 @import "tailwindcss";
 
+:root {
+  --gs-bg: #001538;
+  --gs-card: rgba(0,10,32,0.85);
+  --gs-accent: #5590e8;
+  --gs-accent-rgb: 85,144,232;
+  --gs-text: #dad7cd;
+  --gs-text-rgb: 218,215,205;
+}
+
 body {
-  background: #2d4a3e;
+  background: var(--gs-bg);
   min-height: 100vh;
 }
 
@@ -16,7 +25,7 @@ body {
 }
 
 .press-item:hover {
-  background: rgba(107, 171, 160, 0.06);
+  background: rgba(var(--gs-accent-rgb), 0.06);
 }
 
 .press-outlet {
@@ -25,18 +34,18 @@ body {
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #6BABA0;
+  color: var(--gs-accent);
 }
 
 .press-title {
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
   font-size: 14px;
   line-height: 1.55;
-  color: #8A8680;
+  color: rgba(var(--gs-text-rgb), 0.55);
   margin-top: 3px;
   transition: color 0.2s ease;
 }
 
 .press-item:hover .press-title {
-  color: #E0DCD5;
+  color: var(--gs-text);
 }

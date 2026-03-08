@@ -8,6 +8,7 @@ import {
   Plus_Jakarta_Sans,
 } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from '@/contexts/Theme';
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -437,8 +438,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Canonical for clarity */}
         <link rel="canonical" href="https://gsym.me" />
         {/* Theme color for browsers */}
-        <meta name="theme-color" content="#2d4a3e" media="(prefers-color-scheme: dark)" />
-        <meta name="theme-color" content="#2d4a3e" />
+        <meta name="theme-color" content="#001538" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#001538" />
         {/* Color scheme */}
         <meta name="color-scheme" content="dark" />
         {/* Viewport enhancements */}
@@ -468,7 +469,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }}
         />
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

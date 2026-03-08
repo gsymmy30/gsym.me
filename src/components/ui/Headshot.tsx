@@ -24,16 +24,16 @@ const STYLES = `
     padding: 0 10px 10px;
     display: flex;
     flex-direction: column;
-    background: rgba(12, 30, 22, 0.82);
+    background: var(--gs-card);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid rgba(218,215,205,0.12);
-    border-top-color: rgba(218,215,205,0.24);
+    border: 1px solid rgba(var(--gs-text-rgb),0.12);
+    border-top-color: rgba(var(--gs-text-rgb),0.24);
     box-shadow:
       0 2px 4px rgba(0,0,0,0.15),
       0 8px 24px rgba(0,0,0,0.4),
       0 24px 48px rgba(0,0,0,0.25),
-      inset 0 1px 0 rgba(218,215,205,0.05);
+      inset 0 1px 0 rgba(var(--gs-text-rgb),0.05);
     transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
 
@@ -42,7 +42,7 @@ const STYLES = `
       0 2px 4px rgba(0,0,0,0.1),
       0 16px 40px rgba(0,0,0,0.55),
       0 32px 64px rgba(0,0,0,0.3),
-      inset 0 1px 0 rgba(218,215,205,0.05);
+      inset 0 1px 0 rgba(var(--gs-text-rgb),0.05);
   }
 
   .gs-headshot-pill img {
@@ -97,7 +97,7 @@ export default function Headshot() {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
       >
-        <div className="gs-headshot-pill" style={{ transform: `scale(${scale})`, transformOrigin: 'top left', ...(isSelected ? { outline: '1.5px solid rgba(218,215,205,0.4)', outlineOffset: '3px' } : {}) }}>
+        <div className="gs-headshot-pill" style={{ transform: `scale(${scale})`, transformOrigin: 'top left', ...(isSelected ? { outline: '1.5px solid rgba(var(--gs-text-rgb),0.4)', outlineOffset: '3px' } : {}) }}>
           <MacControls onShrink={shrink} onGrow={grow} onReset={reset} atMin={atMin} atMax={atMax} />
           <img
             src="/headshot.jpg"

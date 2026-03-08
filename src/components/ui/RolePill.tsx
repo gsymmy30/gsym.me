@@ -28,17 +28,17 @@ const STYLES = `
   }
 
   .gs-role-pill {
-    background: rgba(12, 30, 22, 0.82);
+    background: var(--gs-card);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid rgba(218,215,205,0.12);
-    border-top-color: rgba(218,215,205,0.24);
+    border: 1px solid rgba(var(--gs-text-rgb),0.12);
+    border-top-color: rgba(var(--gs-text-rgb),0.24);
     border-radius: 14px;
     box-shadow:
       0 2px 4px rgba(0,0,0,0.15),
       0 8px 24px rgba(0,0,0,0.4),
       0 24px 48px rgba(0,0,0,0.25),
-      inset 0 1px 0 rgba(218,215,205,0.05);
+      inset 0 1px 0 rgba(var(--gs-text-rgb),0.05);
     padding: 18px 32px;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
     display: flex;
@@ -52,7 +52,7 @@ const STYLES = `
       0 2px 4px rgba(0,0,0,0.1),
       0 16px 40px rgba(0,0,0,0.55),
       0 32px 64px rgba(0,0,0,0.3),
-      inset 0 1px 0 rgba(218,215,205,0.05);
+      inset 0 1px 0 rgba(var(--gs-text-rgb),0.05);
   }
 
   .gs-role-dot {
@@ -68,7 +68,7 @@ const STYLES = `
   .gs-role-divider {
     width: 1px;
     height: 18px;
-    background: rgba(218,215,205,0.14);
+    background: rgba(var(--gs-text-rgb),0.14);
     flex-shrink: 0;
   }
 
@@ -77,7 +77,7 @@ const STYLES = `
     font-size: 15px;
     font-weight: 400;
     letter-spacing: 0.01em;
-    color: rgba(218,215,205,0.65);
+    color: rgba(var(--gs-text-rgb),0.65);
   }
 
   .gs-role-link {
@@ -88,10 +88,10 @@ const STYLES = `
     text-decoration: none;
     background: linear-gradient(
       90deg,
-      rgba(218,215,205,0.55) 0%,
-      rgba(218,215,205,1) 40%,
-      rgba(218,215,205,1) 60%,
-      rgba(218,215,205,0.55) 100%
+      rgba(var(--gs-text-rgb),0.55) 0%,
+      rgba(var(--gs-text-rgb),1) 40%,
+      rgba(var(--gs-text-rgb),1) 60%,
+      rgba(var(--gs-text-rgb),0.55) 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -147,7 +147,7 @@ export default function RolePill() {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
       >
-        <div className="gs-role-pill" style={isSelected ? { outline: '1.5px solid rgba(218,215,205,0.4)', outlineOffset: '3px' } : undefined}>
+        <div className="gs-role-pill" style={isSelected ? { outline: '1.5px solid rgba(var(--gs-text-rgb),0.4)', outlineOffset: '3px' } : undefined}>
           <span className="gs-role-dot" />
           <span className="gs-role-text">Technical Program Manager</span>
           <span className="gs-role-divider" />

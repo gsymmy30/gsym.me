@@ -31,6 +31,10 @@ export function renderGlobe(
   rotY: number,
   coast: Coastlines | null,
   cssSize = 200,
+  accentRgb = '85,144,232',
+  base1 = '#0a1a3a',
+  base2 = '#050e28',
+  base3 = '#010614',
 ) {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
@@ -46,9 +50,9 @@ export function renderGlobe(
 
   // Atmosphere halo
   const atmo = ctx.createRadialGradient(cx, cy, r * 0.9, cx, cy, r * 1.22);
-  atmo.addColorStop(0, 'rgba(107,171,160,0)');
-  atmo.addColorStop(0.6, 'rgba(107,171,160,0.07)');
-  atmo.addColorStop(1, 'rgba(107,171,160,0.32)');
+  atmo.addColorStop(0, `rgba(${accentRgb},0)`);
+  atmo.addColorStop(0.6, `rgba(${accentRgb},0.07)`);
+  atmo.addColorStop(1, `rgba(${accentRgb},0.32)`);
   ctx.beginPath();
   ctx.arc(cx, cy, r * 1.22, 0, Math.PI * 2);
   ctx.fillStyle = atmo;
@@ -59,11 +63,11 @@ export function renderGlobe(
   ctx.arc(cx, cy, r, 0, Math.PI * 2);
   ctx.clip();
 
-  // Dark sphere base
+  // Sphere base
   const base = ctx.createRadialGradient(cx - r * 0.28, cy - r * 0.28, r * 0.04, cx + r * 0.12, cy + r * 0.12, r * 1.1);
-  base.addColorStop(0, '#1c4438');
-  base.addColorStop(0.45, '#0e2820');
-  base.addColorStop(1, '#040f0c');
+  base.addColorStop(0, base1);
+  base.addColorStop(0.45, base2);
+  base.addColorStop(1, base3);
   ctx.fillStyle = base;
   ctx.fillRect(0, 0, W, H);
 
@@ -159,7 +163,7 @@ export function renderGlobe(
       if (pz >= 0) { down ? ctx.lineTo(px, py) : ctx.moveTo(px, py); down = true; }
       else { down = false; }
     }
-    ctx.strokeStyle = isEquator ? 'rgba(107,171,160,0.55)' : 'rgba(107,171,160,0.18)';
+    ctx.strokeStyle = isEquator ? `rgba(${accentRgb},0.55)` : `rgba(${accentRgb},0.18)`;
     ctx.lineWidth = (isEquator ? 1.4 : 0.75) * dpr;
     ctx.stroke();
   }
@@ -173,7 +177,7 @@ export function renderGlobe(
       if (pz >= 0) { down ? ctx.lineTo(px, py) : ctx.moveTo(px, py); down = true; }
       else { down = false; }
     }
-    ctx.strokeStyle = 'rgba(107,171,160,0.15)';
+    ctx.strokeStyle = `rgba(${accentRgb},0.15)`;
     ctx.lineWidth = 0.75 * dpr;
     ctx.stroke();
   }
@@ -186,13 +190,13 @@ export function renderGlobe(
     if (pz >= 0) { pmDown ? ctx.lineTo(px, py) : ctx.moveTo(px, py); pmDown = true; }
     else { pmDown = false; }
   }
-  ctx.strokeStyle = 'rgba(107,171,160,0.38)';
+  ctx.strokeStyle = `rgba(${accentRgb},0.38)`;
   ctx.lineWidth = 1.1 * dpr;
   ctx.stroke();
 
   const hasCoast = !!(coast && coast.length);
   if (!hasCoast) {
-    ctx.fillStyle = 'rgba(107,171,160,0.9)';
+    ctx.fillStyle = `rgba(${accentRgb},0.9)`;
     for (let lat = -70; lat <= 70; lat += 2) {
       for (let lon = -180; lon <= 180; lon += 2) {
         const lm = landMask(lat, lon);
@@ -209,7 +213,7 @@ export function renderGlobe(
 
   if (hasCoast) {
     ctx.save();
-    ctx.strokeStyle = 'rgba(107,171,160,0.7)';
+    ctx.strokeStyle = `rgba(${accentRgb},0.7)`;
     ctx.lineWidth = 0.9 * dpr;
     for (const line of coast!) {
       let down = false;
@@ -255,7 +259,7 @@ export function renderGlobe(
   // Outer stroke ring
   ctx.beginPath();
   ctx.arc(cx, cy, r, 0, Math.PI * 2);
-  ctx.strokeStyle = 'rgba(107,171,160,0.12)';
+  ctx.strokeStyle = `rgba(${accentRgb},0.12)`;
   ctx.lineWidth = 1 * dpr;
   ctx.stroke();
 }

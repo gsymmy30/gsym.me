@@ -33,17 +33,17 @@ const STYLES = `
   }
 
   .gs-bc {
-    background: rgba(12, 30, 22, 0.82);
+    background: var(--gs-card);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid rgba(218,215,205,0.12);
-    border-top-color: rgba(218,215,205,0.24);
+    border: 1px solid rgba(var(--gs-text-rgb),0.12);
+    border-top-color: rgba(var(--gs-text-rgb),0.24);
     border-radius: 18px;
     box-shadow:
       0 2px 4px rgba(0,0,0,0.15),
       0 8px 24px rgba(0,0,0,0.4),
       0 24px 48px rgba(0,0,0,0.25),
-      inset 0 1px 0 rgba(218,215,205,0.05);
+      inset 0 1px 0 rgba(var(--gs-text-rgb),0.05);
     overflow: hidden;
   }
 
@@ -95,7 +95,7 @@ const STYLES = `
     line-height: 0.88;
     letter-spacing: -0.01em;
     text-transform: uppercase;
-    color: #dad7cd;
+    color: var(--gs-text);
     white-space: nowrap;
   }
 
@@ -124,14 +124,14 @@ const STYLES = `
     font-size: 18px;
     font-weight: 400;
     letter-spacing: 0.01em;
-    color: rgba(218,215,205,0.6);
+    color: rgba(var(--gs-text-rgb),0.6);
     white-space: nowrap;
   }
 
   .gs-bc-role-rule {
     width: 1px;
     height: 18px;
-    background: rgba(218,215,205,0.15);
+    background: rgba(var(--gs-text-rgb),0.15);
     flex-shrink: 0;
   }
 
@@ -143,10 +143,10 @@ const STYLES = `
     white-space: nowrap;
     background: linear-gradient(
       90deg,
-      rgba(218,215,205,0.5) 0%,
-      rgba(218,215,205,1) 40%,
-      rgba(218,215,205,1) 60%,
-      rgba(218,215,205,0.5) 100%
+      rgba(var(--gs-text-rgb),0.5) 0%,
+      rgba(var(--gs-text-rgb),1) 40%,
+      rgba(var(--gs-text-rgb),1) 60%,
+      rgba(var(--gs-text-rgb),0.5) 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -185,7 +185,7 @@ const STYLES = `
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(218,215,205,0.45);
+    color: rgba(var(--gs-text-rgb),0.45);
   }
 
   .gs-bc-text-num {
@@ -193,13 +193,13 @@ const STYLES = `
     font-size: 10px;
     font-weight: 400;
     letter-spacing: 0.08em;
-    color: rgba(218,215,205,0.2);
+    color: rgba(var(--gs-text-rgb),0.2);
   }
 
   .gs-bc-text-hr {
     width: 100%;
     height: 1px;
-    background: rgba(218,215,205,0.09);
+    background: rgba(var(--gs-text-rgb),0.09);
     margin-bottom: 16px;
   }
 
@@ -214,14 +214,14 @@ const STYLES = `
     font-size: 13px;
     font-weight: 400;
     line-height: 1.7;
-    color: rgba(218,215,205,0.75);
+    color: rgba(var(--gs-text-rgb),0.75);
     margin: 0;
   }
 
   .gs-bc-para-rule {
     width: 100%;
     height: 1px;
-    background: rgba(218,215,205,0.07);
+    background: rgba(var(--gs-text-rgb),0.07);
   }
 
   /* MOBILE */

@@ -18,17 +18,17 @@ const STYLES = `
   }
 
   .gs-about-pill {
-    background: rgba(12, 30, 22, 0.82);
+    background: var(--gs-card);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid rgba(218,215,205,0.12);
-    border-top-color: rgba(218,215,205,0.24);
+    border: 1px solid rgba(var(--gs-text-rgb),0.12);
+    border-top-color: rgba(var(--gs-text-rgb),0.24);
     border-radius: 20px;
     box-shadow:
       0 2px 4px rgba(0,0,0,0.15),
       0 8px 24px rgba(0,0,0,0.4),
       0 24px 48px rgba(0,0,0,0.25),
-      inset 0 1px 0 rgba(218,215,205,0.05);
+      inset 0 1px 0 rgba(var(--gs-text-rgb),0.05);
     padding: 28px 32px 24px;
     transition: box-shadow 0.2s ease;
     display: flex;
@@ -41,7 +41,7 @@ const STYLES = `
       0 2px 4px rgba(0,0,0,0.1),
       0 16px 40px rgba(0,0,0,0.55),
       0 32px 64px rgba(0,0,0,0.3),
-      inset 0 1px 0 rgba(218,215,205,0.05);
+      inset 0 1px 0 rgba(var(--gs-text-rgb),0.05);
   }
 
   .gs-about-header {
@@ -57,7 +57,7 @@ const STYLES = `
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(218,215,205,0.5);
+    color: rgba(var(--gs-text-rgb),0.5);
   }
 
   .gs-about-num {
@@ -65,13 +65,13 @@ const STYLES = `
     font-size: 10px;
     font-weight: 400;
     letter-spacing: 0.08em;
-    color: rgba(218,215,205,0.22);
+    color: rgba(var(--gs-text-rgb),0.22);
   }
 
   .gs-about-divider {
     width: 100%;
     height: 1px;
-    background: rgba(218,215,205,0.1);
+    background: rgba(var(--gs-text-rgb),0.1);
     margin-bottom: 20px;
   }
 
@@ -86,26 +86,26 @@ const STYLES = `
     font-size: 13.5px;
     font-weight: 400;
     line-height: 1.7;
-    color: rgba(218,215,205,0.78);
+    color: rgba(var(--gs-text-rgb),0.78);
     margin: 0;
   }
 
   .gs-about-para-rule {
     width: 100%;
     height: 1px;
-    background: rgba(218,215,205,0.07);
+    background: rgba(var(--gs-text-rgb),0.07);
   }
 
   .gs-about-link {
-    color: rgba(218,215,205,0.95);
+    color: rgba(var(--gs-text-rgb),0.95);
     text-decoration: underline;
-    text-decoration-color: rgba(218,215,205,0.25);
+    text-decoration-color: rgba(var(--gs-text-rgb),0.25);
     text-underline-offset: 3px;
     transition: text-decoration-color 0.2s ease;
   }
 
   .gs-about-link:hover {
-    text-decoration-color: rgba(218,215,205,0.7);
+    text-decoration-color: rgba(var(--gs-text-rgb),0.7);
   }
 
   @media (max-width: 639px) {
@@ -151,7 +151,7 @@ export default function AboutPill() {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
       >
-        <div className="gs-about-pill" style={isSelected ? { outline: '1.5px solid rgba(218,215,205,0.4)', outlineOffset: '3px' } : undefined}>
+        <div className="gs-about-pill" style={isSelected ? { outline: '1.5px solid rgba(var(--gs-text-rgb),0.4)', outlineOffset: '3px' } : undefined}>
           <div className="gs-about-header">
             <span className="gs-about-label">About</span>
           </div>

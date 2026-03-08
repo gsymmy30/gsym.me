@@ -18,17 +18,17 @@ const STYLES = `
   }
 
   .gs-name-pill {
-    background: rgba(12, 30, 22, 0.82);
+    background: var(--gs-card);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid rgba(218,215,205,0.12);
-    border-top-color: rgba(218,215,205,0.24);
+    border: 1px solid rgba(var(--gs-text-rgb),0.12);
+    border-top-color: rgba(var(--gs-text-rgb),0.24);
     border-radius: 18px;
     box-shadow:
       0 2px 4px rgba(0,0,0,0.15),
       0 8px 24px rgba(0,0,0,0.4),
       0 24px 48px rgba(0,0,0,0.25),
-      inset 0 1px 0 rgba(218,215,205,0.05);
+      inset 0 1px 0 rgba(var(--gs-text-rgb),0.05);
     padding: 28px 36px;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
     display: flex;
@@ -42,7 +42,7 @@ const STYLES = `
       0 2px 4px rgba(0,0,0,0.1),
       0 16px 40px rgba(0,0,0,0.55),
       0 32px 64px rgba(0,0,0,0.3),
-      inset 0 1px 0 rgba(218,215,205,0.05);
+      inset 0 1px 0 rgba(var(--gs-text-rgb),0.05);
   }
 
   .gs-name-eyebrow {
@@ -51,7 +51,7 @@ const STYLES = `
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(218,215,205,0.4);
+    color: rgba(var(--gs-text-rgb),0.4);
     margin-bottom: 6px;
   }
 
@@ -62,7 +62,7 @@ const STYLES = `
     line-height: 0.9;
     letter-spacing: -0.01em;
     text-transform: uppercase;
-    color: #dad7cd;
+    color: var(--gs-text);
     white-space: nowrap;
   }
 
@@ -108,7 +108,7 @@ export default function NamePill() {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
       >
-        <div className="gs-name-pill" style={isSelected ? { outline: '1.5px solid rgba(218,215,205,0.4)', outlineOffset: '3px' } : undefined}>
+        <div className="gs-name-pill" style={isSelected ? { outline: '1.5px solid rgba(var(--gs-text-rgb),0.4)', outlineOffset: '3px' } : undefined}>
           <div className="gs-name-text">Gursimran Singh</div>
         </div>
       </div>

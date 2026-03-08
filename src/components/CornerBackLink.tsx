@@ -16,7 +16,7 @@ export default function CornerBackLink() {
           textDecoration: "none",
           transition: "color 0.22s ease",
         }}
-        onMouseEnter={e => (e.currentTarget.style.color = "#6BABA0")}
+        onMouseEnter={e => (e.currentTarget.style.color = "var(--gs-accent)")}
         onMouseLeave={e => (e.currentTarget.style.color = "#484642")}
       >
         ← Index
