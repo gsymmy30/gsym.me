@@ -27,6 +27,8 @@ function applyTheme(theme: Theme) {
   root.style.setProperty('--gs-accent-rgb', theme.accentRgb);
   root.style.setProperty('--gs-text', theme.text);
   root.style.setProperty('--gs-text-rgb', theme.textRgb);
+  root.style.setProperty('--gs-border', theme.pillBorderColor ?? `rgba(${theme.textRgb},0.12)`);
+  root.style.setProperty('--gs-border-top', theme.pillBorderTopColor ?? `rgba(${theme.textRgb},0.24)`);
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {

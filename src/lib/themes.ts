@@ -1,4 +1,4 @@
-export type ThemeId = 'blue' | 'green' | 'white' | 'black';
+export type ThemeId = 'blue' | 'green' | 'white' | 'black' | 'currents';
 
 export interface Theme {
   id: ThemeId;
@@ -10,6 +10,9 @@ export interface Theme {
   accentRgb: string;
   text: string;
   textRgb: string;
+  wavesLineColor?: string;
+  pillBorderColor?: string;
+  pillBorderTopColor?: string;
   globeAccentRgb: string;
   globeBase1: string;
   globeBase2: string;
@@ -77,6 +80,24 @@ export const THEMES: Record<ThemeId, Theme> = {
     globeBase2: '#0a0a0a',
     globeBase3: '#020202',
   },
+  currents: {
+    id: 'currents',
+    label: 'Currents',
+    swatchColor: '#846085',
+    pageBg: '#846085',
+    cardBg: 'rgba(41,34,43,0.88)',
+    accent: '#e0185a',
+    accentRgb: '224,24,90',
+    text: '#f0e4f8',
+    textRgb: '240,228,248',
+    wavesLineColor: '#29222B',
+    pillBorderColor: 'rgba(232,34,55,0.45)',
+    pillBorderTopColor: 'rgba(232,34,55,0.75)',
+    globeAccentRgb: '200,200,210',
+    globeBase1: '#686870',
+    globeBase2: '#484850',
+    globeBase3: '#242428',
+  },
 };
 
-export const THEME_IDS: ThemeId[] = ['blue', 'green', 'white', 'black'];
+export const THEME_IDS: ThemeId[] = ['blue', 'green', 'white', 'black', 'currents'];

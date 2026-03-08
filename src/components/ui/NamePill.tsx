@@ -21,8 +21,8 @@ const STYLES = `
     background: var(--gs-card);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid rgba(var(--gs-text-rgb),0.12);
-    border-top-color: rgba(var(--gs-text-rgb),0.24);
+    border: 1px solid var(--gs-border);
+    border-top-color: var(--gs-border-top);
     border-radius: 18px;
     box-shadow:
       0 2px 4px rgba(0,0,0,0.15),

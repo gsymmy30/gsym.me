@@ -7,6 +7,8 @@
   --gs-accent-rgb: 85,144,232;
   --gs-text: #dad7cd;
   --gs-text-rgb: 218,215,205;
+  --gs-border: rgba(218,215,205,0.12);
+  --gs-border-top: rgba(218,215,205,0.24);
 }
 
 body {

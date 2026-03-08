@@ -8,7 +8,7 @@ export default function ThemeScene() {
 
   return (
     <Waves
-      lineColor={theme.text}
+      lineColor={theme.wavesLineColor ?? theme.text}
       backgroundColor={theme.pageBg}
       waveSpeedX={0.0125}
       waveSpeedY={0.005}
