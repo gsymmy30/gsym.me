@@ -11,7 +11,7 @@ interface ThemeContextValue {
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
-  theme: THEMES.blue,
+  theme: THEMES.green,
   setTheme: () => {},
 });
 
@@ -32,11 +32,11 @@ function applyTheme(theme: Theme) {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [themeId, setThemeId] = useState<ThemeId>('blue');
+  const [themeId, setThemeId] = useState<ThemeId>('green');
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY) as ThemeId | null;
-    const id = saved && THEMES[saved] ? saved : 'blue';
+    const id = saved && THEMES[saved] ? saved : 'green';
     setThemeId(id);
     applyTheme(THEMES[id]);
   }, []);
