@@ -178,12 +178,13 @@ export default function PressPage() {
 
         {/* Heading */}
         <h1
-          className="mt-10 leading-none text-[#E4E0D8]"
+          className="mt-10 leading-none"
           style={{
-            fontFamily: "var(--font-display, 'Cormorant Garamond', Georgia, serif)",
-            fontWeight: 300,
-            fontSize: "clamp(52px, 8vw, 76px)",
-            letterSpacing: "-0.01em",
+            fontFamily: "'Parkinsans', sans-serif",
+            fontWeight: 600,
+            fontSize: "clamp(32px, 6vw, 48px)",
+            letterSpacing: "-0.02em",
+            color: "#111",
           }}
         >
           Press

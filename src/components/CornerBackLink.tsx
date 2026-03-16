@@ -8,16 +8,16 @@ export default function CornerBackLink() {
       <Link
         href="/"
         style={{
-          fontFamily: "var(--font-geist-mono, monospace)",
+          fontFamily: "'Parkinsans', sans-serif",
           fontSize: "9px",
           letterSpacing: "0.22em",
           textTransform: "uppercase",
-          color: "#484642",
+          color: "#555",
           textDecoration: "none",
           transition: "color 0.22s ease",
         }}
-        onMouseEnter={e => (e.currentTarget.style.color = "var(--gs-accent)")}
-        onMouseLeave={e => (e.currentTarget.style.color = "#484642")}
+        onMouseEnter={e => (e.currentTarget.style.color = "#111")}
+        onMouseLeave={e => (e.currentTarget.style.color = "#555")}
       >
         ← Index
       </Link>

@@ -1,50 +1,6 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
-import {
-  Cormorant_Garamond,
-  Geist_Mono,
-  Syne,
-  Barlow_Condensed,
-  Plus_Jakarta_Sans,
-} from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from '@/contexts/Theme';
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-geist-mono",
-  display: "swap",
-});
-
-const syne = Syne({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-syne",
-  display: "swap",
-});
-
-const barlowCondensed = Barlow_Condensed({
-  subsets: ["latin"],
-  weight: ["700", "800", "900"],
-  variable: "--font-barlow",
-  display: "swap",
-});
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  variable: "--font-jakarta",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gsym.me"),
@@ -114,7 +70,6 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
-  manifest: "/site.webmanifest",
   openGraph: {
     title: "Gursimran Singh",
     description:
@@ -160,12 +115,10 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    // Geo meta tags
     "geo.region": "US-CA",
     "geo.placename": "San Francisco, California",
     "geo.position": "37.7749;-122.4194",
     "ICBM": "37.7749, -122.4194",
-    // Dublin Core
     "DC.title": "Gursimran Singh",
     "DC.creator": "Gursimran Singh",
     "DC.subject": "Technical Program Manager, Google DeepMind, San Francisco, AI, Machine Learning",
@@ -179,17 +132,12 @@ export const metadata: Metadata = {
     "DC.language": "en",
     "DC.rights": "Copyright 2026 Gursimran Singh",
     "DC.coverage": "San Francisco, California, United States",
-    // Profile-specific
     "profile:first_name": "Gursimran",
     "profile:last_name": "Singh",
     "profile:username": "gsymmy",
-    // Authorship / identity
     "article:author": "https://gsym.me",
-    // Rating
     "rating": "General",
-    // Revisit
     "revisit-after": "7 days",
-    // Classification
     "classification": "Personal Website, Portfolio, Technology",
     "category": "Personal Website",
     "coverage": "Worldwide",
@@ -197,7 +145,6 @@ export const metadata: Metadata = {
     "target": "all",
     "HandheldFriendly": "True",
     "MobileOptimized": "320",
-    // Photo / image signals
     "thumbnail": "https://gsym.me/headshot.jpg",
     "twitter:image:alt": "Gursimran Singh — Technical Program Manager at Google DeepMind",
   },
@@ -278,22 +225,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         "Cloud Computing",
         "Cross-functional Leadership",
       ],
-      estimatedSalary: {
-        "@type": "MonetaryAmountDistribution",
-        name: "Technical Program Manager salary in San Francisco",
-        currency: "USD",
-        duration: "P1Y",
-        percentile10: 175000,
-        median: 220000,
-        percentile90: 280000,
-      },
     },
     address: {
       "@type": "PostalAddress",
       addressLocality: "San Francisco",
       addressRegion: "CA",
       addressCountry: "US",
-      addressCountryCode: "US",
     },
     homeLocation: {
       "@type": "Place",
@@ -345,11 +282,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     author: { "@id": "https://gsym.me/#person" },
     copyrightHolder: { "@id": "https://gsym.me/#person" },
     copyrightYear: 2026,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://gsym.me/?q={search_term_string}",
-      "query-input": "required name=search_term_string",
-    },
   };
 
   const imageJsonLd = {
@@ -370,8 +302,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     copyrightHolder: { "@id": "https://gsym.me/#person" },
     copyrightYear: 2024,
     creditText: "Gursimran Singh",
-    acquireLicensePage: "https://gsym.me",
-    license: "https://gsym.me",
     thumbnailUrl: "https://gsym.me/headshot.jpg",
     inLanguage: "en-US",
     isPartOf: { "@id": "https://gsym.me/#profile" },
@@ -385,7 +315,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     name: "Gursimran Singh",
     inLanguage: "en-US",
     datePublished: "2024-01-01",
-    dateModified: "2026-03-02",
+    dateModified: "2026-03-15",
     mainEntity: { "@id": "https://gsym.me/#person" },
     isPartOf: { "@id": "https://gsym.me/#website" },
     author: { "@id": "https://gsym.me/#person" },
@@ -411,67 +341,63 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" dir="ltr">
       <head>
-        {/* Font preconnects */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
         {/* DNS prefetch for external domains */}
         <link rel="dns-prefetch" href="https://www.linkedin.com" />
         <link rel="dns-prefetch" href="https://github.com" />
         <link rel="dns-prefetch" href="https://x.com" />
         {/* Preload critical above-fold assets */}
         <link rel="preload" href="/headshot.jpg" as="image" type="image/jpeg" fetchPriority="high" />
-        {/* Primary representative image — used by crawlers & Google Images */}
+        {/* Primary representative image */}
         <link rel="image_src" href="https://gsym.me/headshot.jpg" />
-        {/* OG profile fields (property attribute, not name) */}
+        {/* OG profile fields */}
         <meta property="og:profile:first_name" content="Gursimran" />
         <meta property="og:profile:last_name" content="Singh" />
         <meta property="og:profile:username" content="gsymmy" />
         <meta property="og:profile:gender" content="male" />
-        {/* Identity / rel-me equivalents */}
+        {/* Identity / rel-me */}
         <link rel="me" href="https://www.linkedin.com/in/gsymmy/" />
         <link rel="me" href="https://github.com/gsymmy30" />
         <link rel="me" href="https://x.com/gsymmy" />
         <link rel="me" href="mailto:gsymmy@gmail.com" />
         {/* Humans */}
         <link rel="author" href="/humans.txt" />
-        {/* Canonical for clarity */}
+        {/* Canonical */}
         <link rel="canonical" href="https://gsym.me" />
-        {/* Theme color for browsers */}
-        <meta name="theme-color" content="#001538" media="(prefers-color-scheme: dark)" />
-        <meta name="theme-color" content="#001538" />
-        {/* Color scheme */}
-        <meta name="color-scheme" content="dark" />
-        {/* Viewport enhancements */}
+        {/* Theme color */}
+        <meta name="theme-color" content="#ebeaea" />
+        {/* Format detection */}
         <meta name="format-detection" content="telephone=no" />
       </head>
       <body
-        className={`${cormorant.variable} ${geistMono.variable} ${syne.variable} ${barlowCondensed.variable} ${plusJakartaSans.variable} antialiased`}
-        suppressHydrationWarning
+        style={{
+          margin: 0,
+          fontFamily: "'Parkinsans', sans-serif",
+          backgroundColor: "#000",
+        }}
       >
         <script
           type="application/ld+json"
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(imageJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <script
           type="application/ld+json"
-          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <script
           type="application/ld+json"
-          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(imageJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }}
         />
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );
