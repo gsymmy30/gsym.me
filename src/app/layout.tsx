@@ -1,6 +1,14 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
+import { Parkinsans } from "next/font/google";
 import "./globals.css";
+
+const parkinsans = Parkinsans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-parkinsans",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gsym.me"),
@@ -339,20 +347,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en" dir="ltr">
+    <html lang="en" dir="ltr" className={parkinsans.variable}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
         {/* DNS prefetch for external domains */}
         <link rel="dns-prefetch" href="https://www.linkedin.com" />
         <link rel="dns-prefetch" href="https://github.com" />
         <link rel="dns-prefetch" href="https://x.com" />
-        {/* Preload critical above-fold assets */}
-        <link rel="preload" href="/headshot.jpg" as="image" type="image/jpeg" fetchPriority="high" />
+        {/* Preload LCP image */}
+        <link rel="preload" href="/gsymmy.webp" as="image" type="image/webp" fetchPriority="high" />
         {/* Primary representative image */}
         <link rel="image_src" href="https://gsym.me/headshot.jpg" />
         {/* OG profile fields */}
@@ -377,7 +379,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         style={{
           margin: 0,
-          fontFamily: "'Parkinsans', sans-serif",
+          fontFamily: "var(--font-parkinsans), 'Parkinsans', sans-serif",
           backgroundColor: "#000",
         }}
       >

@@ -176,7 +176,7 @@ export default function Header() {
         {/* Logo */}
         <div className="gs-logo-cell">
           <img
-            src="/gsymmy.png"
+            src="/gsymmy.webp"
             alt="GS"
             style={{ height: 38, width: 'auto', display: 'block', filter: logoFilter, opacity: 0.88 }}
           />

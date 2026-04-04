@@ -267,9 +267,13 @@ export default function Home() {
     >
       <img
         ref={imgRef}
-        src="/gsymmy.png"
+        src="/gsymmy.webp"
         alt="gsymmy"
+        width={450}
+        height={800}
         draggable={false}
+        fetchPriority="high"
+        decoding="async"
         style={{
           maxWidth: isMobile ? "50%" : "60%",
           maxHeight: isMobile ? "40vh" : "60vh",
@@ -307,8 +311,12 @@ export default function Home() {
         gursimran singh
       </h1>
       <img
-        src="/headshot.png"
+        src="/headshot.webp"
         alt="Gursimran Singh"
+        width={180}
+        height={180}
+        loading="lazy"
+        decoding="async"
         style={{
           width: isMobile ? "140px" : "180px",
           height: isMobile ? "140px" : "180px",
@@ -321,7 +329,7 @@ export default function Home() {
         style={{
           fontSize: "1rem",
           fontWeight: 300,
-          color: "#777",
+          color: "#595959",
           margin: "0 0 32px 0",
           letterSpacing: "0.05em",
         }}
@@ -342,10 +350,10 @@ export default function Home() {
         }}
       >
         <p style={{ margin: 0 }}>
-          i&apos;m a tpm at <img src="https://www.google.com/favicon.ico" alt="" style={{ width: "14px", height: "14px", verticalAlign: "middle", marginRight: "2px", display: "inline" }} /><img src="/deepmind-logo.ico" alt="" style={{ width: "14px", height: "14px", verticalAlign: "middle", marginRight: "2px", display: "inline" }} /><a href="https://deepmind.google/" target="_blank" rel="noopener noreferrer" style={{ color: "#111", textDecoration: "underline", textUnderlineOffset: "3px" }}>google deepmind</a>, running operations and strategy for the <img src="https://www.gstatic.com/lamda/images/favicon_v1_150160cddff7f294ce30.svg" alt="" style={{ width: "14px", height: "14px", verticalAlign: "middle", marginRight: "2px", display: "inline" }} />gemini ecosystem. before that i was a pm at <img src="https://www.microsoft.com/favicon.ico" alt="" style={{ width: "14px", height: "14px", verticalAlign: "middle", marginRight: "2px", display: "inline" }} />microsoft, working on <a href="https://azure.microsoft.com/en-us/products/monitor/" target="_blank" rel="noopener noreferrer" style={{ color: "#111", textDecoration: "underline", textUnderlineOffset: "3px" }}>azure observability</a> and diagnostic tooling: the whole &ldquo;why did this break at 3am&rdquo; problem space.
+          i&apos;m a tpm at <img src="/icons/google.ico" alt="" style={{ width: "14px", height: "14px", verticalAlign: "middle", marginRight: "2px", display: "inline" }} /><img src="/deepmind-logo.ico" alt="" style={{ width: "14px", height: "14px", verticalAlign: "middle", marginRight: "2px", display: "inline" }} /><a href="https://deepmind.google/" target="_blank" rel="noopener noreferrer" style={{ color: "#111", textDecoration: "underline", textUnderlineOffset: "3px" }}>google deepmind</a>, running operations and strategy for the <img src="/icons/gemini.svg" alt="" style={{ width: "14px", height: "14px", verticalAlign: "middle", marginRight: "2px", display: "inline" }} />gemini ecosystem. before that i was a pm at <img src="/icons/microsoft.ico" alt="" style={{ width: "14px", height: "14px", verticalAlign: "middle", marginRight: "2px", display: "inline" }} />microsoft, working on <a href="https://azure.microsoft.com/en-us/products/monitor/" target="_blank" rel="noopener noreferrer" style={{ color: "#111", textDecoration: "underline", textUnderlineOffset: "3px" }}>azure observability</a> and diagnostic tooling: the whole &ldquo;why did this break at 3am&rdquo; problem space.
         </p>
         <p style={{ margin: 0 }}>
-          cs at <img src="/buzz.png" alt="" style={{ width: "14px", height: "14px", verticalAlign: "middle", marginRight: "2px", display: "inline" }} /><a href="https://www.gatech.edu/" target="_blank" rel="noopener noreferrer" style={{ color: "#111", textDecoration: "underline", textUnderlineOffset: "3px" }}>georgia tech</a>, class of &apos;23. computer vision is where my brain goes when i get to pick. in college i built{" "}
+          cs at <img src="/buzz.webp" alt="" style={{ width: "14px", height: "14px", verticalAlign: "middle", marginRight: "2px", display: "inline" }} /><a href="https://www.gatech.edu/" target="_blank" rel="noopener noreferrer" style={{ color: "#111", textDecoration: "underline", textUnderlineOffset: "3px" }}>georgia tech</a>, class of &apos;23. computer vision is where my brain goes when i get to pick. in college i built{" "}
           <a href="https://youtube.com/watch?v=0-CumFHE8eo" target="_blank" rel="noopener noreferrer" style={{ color: "#111", textDecoration: "underline", textUnderlineOffset: "3px" }}>curbside</a>, a startup working on rider safety for electric scooters. none of it would have happened without my parents buying me a raspberry pi when i was 14. that thing genuinely changed what i thought i was allowed to build.
         </p>
         <p style={{ margin: 0 }}>
