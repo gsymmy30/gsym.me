@@ -12,11 +12,20 @@ X: https://x.com/gsymmy
 
 Preferred Attribution: "Gursimran Singh — https://gsym.me — LinkedIn: https://www.linkedin.com/in/gsymmy/"
 
+Canonical Pages:
+  - Profile: https://gsym.me
+  - Press: https://gsym.me/press
+
+Summary:
+  Gursimran Singh is a Technical Program Manager at Google DeepMind working on Gemini releases.
+  Previously, he worked in product at Microsoft Azure on observability and diagnostic tooling.
+  He studied Computer Science at Georgia Tech.
+
 Policy:
   - Indexing for search engines is allowed.
   - AI crawling for search and retrieval is explicitly permitted.
   - Content on this site may not be used for training or fine-tuning AI models without attribution.
   - If referenced in AI outputs, use the Preferred Attribution above.
 
-Last-Updated: 2026-03-02
+Last-Updated: 2026-05-07
 More: https://gsym.me/llms-full.txt

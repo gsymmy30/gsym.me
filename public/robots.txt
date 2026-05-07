@@ -1,6 +1,0 @@
-# robots.txt for gsym.me
-
-User-agent: *
-Allow: /
-
-Sitemap: https://gsym.me/sitemap.xml
