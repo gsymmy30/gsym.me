@@ -139,7 +139,6 @@ export default function Home() {
                 {index < pressLinks.length - 1 ? ", " : ""}
               </span>
             ))}
-            , <a href="/press">full press list</a>
           </p>
 
           <p>
