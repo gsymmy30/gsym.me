@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Habibi, Inter, Space_Grotesk } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const habibi = Habibi({
@@ -392,8 +390,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }}
         />
         {children}
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );
