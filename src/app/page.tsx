@@ -78,7 +78,7 @@ export default function Home() {
             i&apos;m a tpm at{" "}
             <a href="https://deepmind.google/" target="_blank" rel="noopener noreferrer">
               <InlineIcon src="/icons/google.ico" alt="Google" />
-              <InlineIcon src="/icons/deepmind.svg" alt="DeepMind" />
+              <InlineIcon src="/deepmind-logo.ico" alt="DeepMind" />
               google deepmind
             </a>
             , managing{" "}
