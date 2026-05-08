@@ -85,7 +85,7 @@ export default function Home() {
             , managing{" "}
             <InlineIcon src="/icons/gemini.svg" alt="Gemini" />
             gemini releases. before that i was a pm at{" "}
-            <InlineIcon src="/icons/microsoft.ico" alt="Microsoft" className="mr-1" />
+            <InlineIcon src="/icons/microsoft-color.svg" alt="Microsoft" className="mr-1" />
             microsoft, working on{" "}
             <a
               href="https://azure.microsoft.com/en-us/products/monitor/"
