@@ -78,7 +78,7 @@ export default function Home() {
           <p itemProp="description">
             i&apos;m a tpm at{" "}
             <a href="https://deepmind.google/" target="_blank" rel="noopener noreferrer">
-              <InlineIcon src="/icons/google.ico" alt="Google" />
+              <InlineIcon src="/icons/google-color.svg" alt="Google" />
               <InlineIcon src="/icons/deepmind-color.svg" alt="DeepMind" />
               google deepmind
             </a>
