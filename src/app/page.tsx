@@ -32,7 +32,8 @@ function InlineIcon({
   className?: string;
 }) {
   return (
-    <Image
+    // eslint-disable-next-line @next/next/no-img-element -- tiny brand marks should render from the real source asset, not Next optimization.
+    <img
       src={src}
       alt={alt}
       width={18}
