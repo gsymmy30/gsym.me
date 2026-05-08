@@ -126,7 +126,15 @@ export default function Home() {
 
           <p>
             outside work: i lift, i hike, i kayak when i get the chance. standup comedy and spy
-            fiction on rotation when i&apos;m not doing any of that.
+            fiction on rotation when i&apos;m not doing any of that. concerts are my thing, and{" "}
+            <a
+              href="https://www.youtube.com/shorts/v-mQWT4ANfc"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              the good ones
+            </a>{" "}
+            stay with me for years.
           </p>
 
           <p>
