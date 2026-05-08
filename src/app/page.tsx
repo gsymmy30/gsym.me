@@ -94,7 +94,7 @@ export default function Home() {
             >
               azure observability
             </a>{" "}
-            and diagnostic tooling: the whole “why did this break at 3am” problem space.
+            and diagnostic tooling. the “why did this break at 3am” stuff.
           </p>
 
           <p>
@@ -120,14 +120,14 @@ export default function Home() {
             <a href="https://youtube.com/watch?v=0-CumFHE8eo" target="_blank" rel="noopener noreferrer">
               curbside
             </a>
-            , a startup working on rider safety for electric scooters. none of it would have
-            happened without my parents buying me a raspberry pi when i was 14. that thing genuinely
-            changed what i thought i was allowed to build.
+            , a startup on rider safety for electric scooters. none of it would have happened
+            without my parents buying me a raspberry pi when i was 14. that thing changed what i
+            thought i was allowed to build.
           </p>
 
           <p>
             outside work: i lift, i hike, i kayak when i get the chance. standup comedy and spy
-            fiction on rotation when i&apos;m not doing any of that. i end up at a lot of{" "}
+            fiction otherwise. i end up at a lot of{" "}
             <a
               href="https://www.youtube.com/shorts/1SYMSLW3KVc"
               target="_blank"
