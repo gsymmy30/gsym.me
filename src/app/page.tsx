@@ -78,13 +78,13 @@ export default function Home() {
             i&apos;m a tpm at{" "}
             <a href="https://deepmind.google/" target="_blank" rel="noopener noreferrer">
               <InlineIcon src="/icons/google.ico" alt="Google" />
-              <InlineIcon src="/deepmind-logo.ico" alt="DeepMind" />
+              <InlineIcon src="/icons/deepmind.svg" alt="DeepMind" />
               google deepmind
             </a>
             , managing{" "}
             <InlineIcon src="/icons/gemini.svg" alt="Gemini" />
             gemini releases. before that i was a pm at{" "}
-            <InlineIcon src="/icons/microsoft.ico" alt="Microsoft" className="mr-1" />
+            <InlineIcon src="/icons/microsoft.svg" alt="Microsoft" className="mr-1" />
             microsoft, working on{" "}
             <a
               href="https://azure.microsoft.com/en-us/products/monitor/"

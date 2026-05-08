@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="DeepMind">
+  <defs>
+    <linearGradient id="deepmind-blue" x1="6" y1="6" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7FB2FF"/>
+      <stop offset="0.52" stop-color="#4F83F1"/>
+      <stop offset="1" stop-color="#2D57C8"/>
+    </linearGradient>
+  </defs>
+  <circle cx="16" cy="16" r="14" fill="url(#deepmind-blue)"/>
+  <circle cx="16" cy="16" r="5.4" fill="#203056"/>
+  <circle cx="20.5" cy="10.8" r="3.2" fill="#6EA7FF" opacity="0.78"/>
+</svg>
