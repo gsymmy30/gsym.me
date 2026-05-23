@@ -60,8 +60,8 @@ export default function Home() {
         <Image
           src="/headshot.png"
           alt="Portrait of Gursimran Singh"
-          width={4884}
-          height={4884}
+          width={636}
+          height={636}
           priority
           className="mx-auto -mt-2 h-auto w-full max-w-40 md:max-w-48"
           itemProp="image"
