@@ -82,9 +82,9 @@ export default function Home() {
               <InlineIcon src="/icons/deepmind-color.svg" alt="DeepMind" />
               google deepmind
             </a>
-            , managing{" "}
+            , helping take{" "}
             <InlineIcon src="/icons/gemini.svg" alt="Gemini" />
-            gemini releases. before that i was a pm at{" "}
+            gemini from research to production. before that i was a pm at{" "}
             <InlineIcon src="/icons/microsoft-color.svg" alt="Microsoft" className="mr-1" />
             microsoft, working on{" "}
             <a
