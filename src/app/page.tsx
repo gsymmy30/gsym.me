@@ -94,7 +94,7 @@ export default function Home() {
             >
               azure observability
             </a>{" "}
-            and diagnostic tooling. the “why did this break at 3am” stuff.
+            and diagnostics. the “why did this break at 3am” stuff.
           </p>
 
           <p>
