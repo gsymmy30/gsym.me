@@ -3,6 +3,7 @@ import { withContentlayer } from "next-contentlayer2";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  turbopack: {},
   experimental: {},
   images: {
     formats: ["image/webp", "image/avif"],
