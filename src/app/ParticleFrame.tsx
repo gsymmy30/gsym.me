@@ -51,6 +51,8 @@ export function ParticleFrame({
     let raf = 0;
     let start = 0;
     const mouse = { x: -9999, y: -9999, down: false };
+    // bounds of the dot field in CSS px, used to scope the drag interaction
+    let region: { l: number; r: number; t: number; b: number } | null = null;
 
     const color = "64,78,59"; // --color-forest rgb
 
@@ -70,6 +72,7 @@ export function ParticleFrame({
       const card = document.getElementById(bottomId);
       if (!photo || !card || w < 768) {
         particles = [];
+        region = null;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         return;
       }
@@ -77,6 +80,7 @@ export function ParticleFrame({
       const cr = card.getBoundingClientRect();
       // a filled rectangle directly below the photo: same width as the photo,
       // running down to the bottom of the text column
+      region = { l: pr.left, r: pr.right, t: pr.bottom + GAP, b: cr.bottom };
       const left = pr.left * dpr;
       const right = pr.right * dpr;
       const top = (pr.bottom + GAP) * dpr;
@@ -84,6 +88,7 @@ export function ParticleFrame({
       const step = SPACING * dpr;
       if (bottom <= top) {
         particles = [];
+        region = null;
         return;
       }
 
@@ -157,6 +162,9 @@ export function ParticleFrame({
       raf = requestAnimationFrame(draw);
     };
 
+    const inRegion = (x: number, y: number) =>
+      !!region && x >= region.l && x <= region.r && y >= region.t && y <= region.b;
+
     const onMove = (e: PointerEvent) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
@@ -164,10 +172,19 @@ export function ParticleFrame({
     const onDown = (e: PointerEvent) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
-      mouse.down = true;
+      // only engage (and suppress text selection) when the press starts
+      // inside the dot field; clicks/drags elsewhere behave normally
+      if (inRegion(e.clientX, e.clientY)) {
+        mouse.down = true;
+        document.body.style.userSelect = "none";
+      }
     };
     const onUp = () => {
       mouse.down = false;
+      document.body.style.userSelect = "";
+    };
+    const onSelectStart = (e: Event) => {
+      if (mouse.down) e.preventDefault();
     };
 
     layout();
@@ -184,6 +201,7 @@ export function ParticleFrame({
     window.addEventListener("pointerdown", onDown);
     window.addEventListener("pointerup", onUp);
     window.addEventListener("pointercancel", onUp);
+    document.addEventListener("selectstart", onSelectStart);
 
     return () => {
       cancelAnimationFrame(raf);
@@ -194,6 +212,8 @@ export function ParticleFrame({
       window.removeEventListener("pointerdown", onDown);
       window.removeEventListener("pointerup", onUp);
       window.removeEventListener("pointercancel", onUp);
+      document.removeEventListener("selectstart", onSelectStart);
+      document.body.style.userSelect = "";
     };
   }, [photoId, bottomId]);
 
