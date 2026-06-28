@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ParticleFrame } from "./ParticleFrame";
 
 const pressLinks = [
   {
@@ -50,14 +51,17 @@ export default function Home() {
       itemScope
       itemType="https://schema.org/ProfilePage"
     >
+      <ParticleFrame photoId="headshot" bottomId="profile-card" />
       <section
-        className="grid w-full items-start justify-center gap-8 md:w-[720px] md:grid-cols-[168px_520px] md:gap-8"
+        id="profile-card"
+        className="relative z-10 grid w-full items-start justify-center gap-8 md:w-[720px] md:grid-cols-[168px_520px] md:gap-8"
         aria-label="Gursimran Singh profile"
         itemProp="mainEntity"
         itemScope
         itemType="https://schema.org/Person"
       >
         <Image
+          id="headshot"
           src="/headshot.png"
           alt="Portrait of Gursimran Singh"
           width={636}
